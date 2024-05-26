@@ -10,3 +10,7 @@ import Foundation
 struct ColorName {
     static let background_color = "Background_Color"
 }
+
+struct identifiers {
+    static let discover_collection_cell = "DiscoverCollectionCell"
+}
