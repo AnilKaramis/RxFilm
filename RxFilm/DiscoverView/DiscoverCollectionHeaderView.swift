@@ -6,27 +6,34 @@
 //
 
 import UIKit
+import Foundation
 
 class DiscoverCollectionHeaderView: UICollectionReusableView {
+    
     let titleLabel: UILabel = {
-    lazy var label = UILabel()
-       label.textColor = .white
-       label.numberOfLines = 0
-       label.textAlignment = .left
-       label.font = UIFont(name: "AvenirNext-medium", size: 32.0)!
+        lazy var label = UILabel()
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 32)
+        label.text = "Discover Movies"
         return label
     }()
     
-    let searchField : UITextField = {
-    lazy var textfield = UITextField()
-       textfield.layer.cornerRadius = 20
-       textfield.layer.borderColor = UIColor.gray.cgColor
-       textfield.layer.borderWidth = 10
-       textfield.backgroundColor = .black
-       textfield.placeholder = "Search..."
+    let searchField : UISearchTextField = {
+        lazy var textfield = UISearchTextField()
+        textfield.layer.cornerRadius = 20
+        textfield.backgroundColor = UIColor(named: Colors.light_Background)
+        textfield.placeholder = "Search..."
+        
+        // Image in searchField
+        var imageView = UIImageView()
+        imageView.image = UIImage(named: "magnifyingglass")
+        textfield.leftView = imageView
+        textfield.leftViewMode = .always
         return textfield
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -45,16 +52,33 @@ extension DiscoverCollectionHeaderView {
         self.addSubview(searchField)
         
         titleLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().offset(20)
-            make.top.equalToSuperview().offset(50)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.top.equalToSuperview().offset(20)
         }
         
         searchField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(50)
-            make.left.right.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(50)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
         }
         
+    }
+}
+
+class SearchTextField: UITextField {
+    
+    let textPadding = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
     }
 }
 

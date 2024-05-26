@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct ColorName {
-    static let background_color = "Background_Color"
+struct Colors {
+    static let background = "BackgroundColor"
+    static let light_Background = "LightBackgroundColor"
+    static let placeholder = "PlaceholderTextColor"
 }
 
-struct identifiers {
+struct Identifiers {
     static let discover_collection_cell = "DiscoverCollectionCell"
     static let discover_collection_header = "DiscoverCollectionHeader"
 }
