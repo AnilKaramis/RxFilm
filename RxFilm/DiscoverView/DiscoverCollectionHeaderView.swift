@@ -20,18 +20,23 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
         return label
     }()
     
-    let searchField : UISearchTextField = {
-        lazy var textfield = UISearchTextField()
+    let searchField : PaddingTextField = {
+        lazy var textfield = PaddingTextField()
         textfield.layer.cornerRadius = 20
         textfield.backgroundColor = UIColor(named: Colors.light_Background)
-        textfield.placeholder = "Search..."
+        //        textfield.placeholder = "Search..."
+        let placeholderColor = UIColor(named: Colors.placeholder) ?? UIColor(named: Colors.light_Background)
+        textfield.attributedPlaceholder = NSAttributedString(
+            string: "Search...",
+            attributes: [NSAttributedString.Key.foregroundColor : placeholderColor])
+        
+        return textfield
         
         // Image in searchField
-        var imageView = UIImageView()
-        imageView.image = UIImage(named: "magnifyingglass")
-        textfield.leftView = imageView
-        textfield.leftViewMode = .always
-        return textfield
+        //        var imageView = UIImageView()
+        //        imageView.image = UIImage(named: "magnifyingglass")
+        //        textfield.leftView = imageView
+        //        textfield.leftViewMode = .always
     }()
     
     override init(frame: CGRect) {
@@ -67,15 +72,15 @@ extension DiscoverCollectionHeaderView {
     }
 }
 
-class SearchTextField: UITextField {
+class PaddingTextField: UITextField {
     
     let textPadding = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-
+    
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
         return rect.inset(by: textPadding)
     }
-
+    
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: textPadding)
