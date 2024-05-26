@@ -9,15 +9,17 @@
 /* Begin PBXBuildFile section */
 		71AFBD7A84BFF8E254CD12C1 /* Pods_RxFilm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D2120FD160D7BB309D3F95 /* Pods_RxFilm.framework */; };
 		775EF224FEA4708367AA54EE /* Pods_RxFilmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CFFBEAAE03C42A64E9D493 /* Pods_RxFilmTests.framework */; };
+		A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */; };
+		A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */; };
 		A5D8AAEF2BFE40A8002F007F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */; };
 		A5D8AAF12BFE40A8002F007F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */; };
-		A5D8AAF32BFE40A8002F007F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AAF22BFE40A8002F007F /* ViewController.swift */; };
 		A5D8AAF62BFE40A8002F007F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A5D8AAF52BFE40A8002F007F /* Base */; };
 		A5D8AAF82BFE40AA002F007F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D8AAF72BFE40AA002F007F /* Assets.xcassets */; };
 		A5D8AAFB2BFE40AA002F007F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A5D8AAFA2BFE40AA002F007F /* Base */; };
 		A5D8AB062BFE40AA002F007F /* RxFilmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AB052BFE40AA002F007F /* RxFilmTests.swift */; };
 		A5D8AB102BFE40AA002F007F /* RxFilmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AB0F2BFE40AA002F007F /* RxFilmUITests.swift */; };
 		A5D8AB122BFE40AA002F007F /* RxFilmUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AB112BFE40AA002F007F /* RxFilmUITestsLaunchTests.swift */; };
+		A5D8AB212C000EA7002F007F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AB202C000EA7002F007F /* Constant.swift */; };
 		F806E73FD69BEF5A4E166282 /* Pods_RxFilm_RxFilmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BD9272F200B22B1FF52AE3 /* Pods_RxFilm_RxFilmUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,10 +45,11 @@
 		83CFFBEAAE03C42A64E9D493 /* Pods_RxFilmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFilmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BD9272F200B22B1FF52AE3 /* Pods_RxFilm_RxFilmUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFilm_RxFilmUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D2120FD160D7BB309D3F95 /* Pods_RxFilm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFilm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5D8AAEB2BFE40A8002F007F /* RxFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A5D8AAF22BFE40A8002F007F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A5D8AAF52BFE40A8002F007F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5D8AAF72BFE40AA002F007F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5D8AAFA2BFE40AA002F007F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		A5D8AB0B2BFE40AA002F007F /* RxFilmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxFilmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8AB0F2BFE40AA002F007F /* RxFilmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxFilmUITests.swift; sourceTree = "<group>"; };
 		A5D8AB112BFE40AA002F007F /* RxFilmUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxFilmUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A5D8AB202C000EA7002F007F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BFF1487802DAFB0E68B0A5DC /* Pods-RxFilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFilmTests.debug.xcconfig"; path = "Target Support Files/Pods-RxFilmTests/Pods-RxFilmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C87C46DA89BF1EF10BCB34F9 /* Pods-RxFilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFilm.release.xcconfig"; path = "Target Support Files/Pods-RxFilm/Pods-RxFilm.release.xcconfig"; sourceTree = "<group>"; };
 		CD80A3957909D81DA63BD1BC /* Pods-RxFilm-RxFilmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFilm-RxFilmUITests.release.xcconfig"; path = "Target Support Files/Pods-RxFilm-RxFilmUITests/Pods-RxFilm-RxFilmUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A53F86CB2C0264ED002BBEA5 /* DiscoverView */ = {
+			isa = PBXGroup;
+			children = (
+				A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */,
+				A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */,
+			);
+			path = DiscoverView;
+			sourceTree = "<group>";
+		};
 		A5D8AAE22BFE40A8002F007F = {
 			isa = PBXGroup;
 			children = (
@@ -118,11 +131,12 @@
 			children = (
 				A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */,
 				A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */,
-				A5D8AAF22BFE40A8002F007F /* ViewController.swift */,
+				A53F86CB2C0264ED002BBEA5 /* DiscoverView */,
 				A5D8AAF42BFE40A8002F007F /* Main.storyboard */,
 				A5D8AAF72BFE40AA002F007F /* Assets.xcassets */,
 				A5D8AAF92BFE40AA002F007F /* LaunchScreen.storyboard */,
 				A5D8AAFC2BFE40AA002F007F /* Info.plist */,
+				A5D8AB202C000EA7002F007F /* Constant.swift */,
 			);
 			path = RxFilm;
 			sourceTree = "<group>";
@@ -164,7 +178,6 @@
 				BFF1487802DAFB0E68B0A5DC /* Pods-RxFilmTests.debug.xcconfig */,
 				FE25EB45A8A120DB535343DC /* Pods-RxFilmTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -407,9 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5D8AAF32BFE40A8002F007F /* ViewController.swift in Sources */,
 				A5D8AAEF2BFE40A8002F007F /* AppDelegate.swift in Sources */,
 				A5D8AAF12BFE40A8002F007F /* SceneDelegate.swift in Sources */,
+				A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */,
+				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
+				A5D8AB212C000EA7002F007F /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +517,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -565,7 +580,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -593,11 +608,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HX5P2M97J;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxFilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -622,11 +638,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HX5P2M97J;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RxFilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
