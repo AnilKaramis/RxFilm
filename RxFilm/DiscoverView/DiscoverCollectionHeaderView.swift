@@ -29,14 +29,7 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
         textfield.attributedPlaceholder = NSAttributedString(
             string: "Search...",
             attributes: [NSAttributedString.Key.foregroundColor : placeholderColor])
-        
         return textfield
-        
-        // Image in searchField
-        //        var imageView = UIImageView()
-        //        imageView.image = UIImage(named: "magnifyingglass")
-        //        textfield.leftView = imageView
-        //        textfield.leftViewMode = .always
     }()
     
     override init(frame: CGRect) {

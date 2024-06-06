@@ -11,19 +11,29 @@ import SnapKit
 class DiscoverViewController:UIViewController {
     
     
-    
+    // CollectionView
     lazy var CollectionView : UICollectionView = {
         var flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-        flowLayout.itemSize = CGSize(width: 150, height: 150)
+//        flowLayout.itemSize = CGSize(width: 150, height: 150)
         flowLayout.headerReferenceSize = CGSize(width: self.preferredContentSize.width, height: 180)
-        return UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+//        return UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+        
+        // CollectionView
+        
+        var collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = UIColor(named: Colors.background)
+        collectionView.register(DiscoverCollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
+        collectionView.register(DiscoverCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header)
+        
+        return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         CollectionView.dataSource = self
+        CollectionView.delegate = self
         
         initUI()
     }
@@ -36,10 +46,13 @@ extension DiscoverViewController {
     private func initUI() {
         
         super.view.addSubview(CollectionView)
-        
-        CollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
-        CollectionView.register(DiscoverCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header)
-        CollectionView.backgroundColor = UIColor(named: Colors.background)
+//        
+//        CollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
+//        CollectionView.register(DiscoverCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header)
+//        CollectionView.backgroundColor = UIColor(named: Colors.background)
+        CollectionView.snp.makeConstraints {
+            $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
         CollectionView.snp.makeConstraints { $0.edges.equalToSuperview()}
     }
 }
@@ -47,14 +60,16 @@ extension DiscoverViewController {
 
 extension DiscoverViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 50
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Cell Property
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath)
-        cell.backgroundColor = .systemRed
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return UICollectionViewCell()}
+        cell.insertData(imageURLString: "", title: "EXAMPLE")
+        
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -65,7 +80,11 @@ extension DiscoverViewController:UICollectionViewDataSource {
 extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printContent(indexPath.row)
+        print(indexPath.row)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = (collectionView.frame.size.width - 60)/3
+        return CGSize(width: itemWidth, height: itemWidth * 1.7)
     }
 }
 

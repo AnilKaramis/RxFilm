@@ -23,6 +23,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         lazy var text = UILabel()
         text.font = UIFont.systemFont(ofSize: 20)
         text.textColor = .white
+        text.numberOfLines = 2
         return text
     }()
     
@@ -38,9 +39,10 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
         
         movieTitle.snp.makeConstraints {
-            $0.top.equalTo(posterImage.snp.bottom).offset(15)
+            $0.top.equalTo(posterImage.snp.bottom).offset(5)
             $0.bottom.greaterThanOrEqualToSuperview()
             $0.leading.equalTo(posterImage.snp.leading)
+            $0.trailing.equalTo(posterImage.snp.trailing)
         }
     }
     
@@ -54,6 +56,7 @@ extension DiscoverCollectionViewCell {
     func insertData(imageURLString:String, title:String) {
         
         movieTitle.text = title
+        movieTitle.textColor = .red
         
         DispatchQueue.global().async {
             guard let imageURL = URL(string: imageURLString) else {
