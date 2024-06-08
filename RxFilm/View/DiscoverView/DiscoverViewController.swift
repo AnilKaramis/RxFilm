@@ -22,7 +22,7 @@ class DiscoverViewController:UIViewController {
         // CollectionView
         
         var collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor(named: Colors.background)
+       
         collectionView.register(DiscoverCollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
         collectionView.register(DiscoverCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header)
         
@@ -34,6 +34,7 @@ class DiscoverViewController:UIViewController {
         
         self.title = "RxFilm"
         
+        self.view.backgroundColor = UIColor(named: Colors.background)
         CollectionView.dataSource = self
         CollectionView.delegate = self
         
@@ -48,14 +49,10 @@ extension DiscoverViewController {
     private func initUI() {
         
         super.view.addSubview(CollectionView)
-//        
-//        CollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
-//        CollectionView.register(DiscoverCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header)
-//        CollectionView.backgroundColor = UIColor(named: Colors.background)
+        
         CollectionView.snp.makeConstraints {
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
-        CollectionView.snp.makeConstraints { $0.edges.equalToSuperview()}
     }
 }
 //MARK: -Collection View Configuration
@@ -90,25 +87,25 @@ extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDeleg
     }
 }
 
-#if DEBUG
-import SwiftUI
-
-struct ViewControllerRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiView: UIViewController,context: Context) {
-            // leave this empty
-    }
-    func makeUIViewController(context: Context) -> UIViewController{
-        DiscoverViewController()
-        }
-}
-struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ViewControllerRepresentable()
-                .ignoresSafeArea()
-                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-        }
-    }
-}
-#endif
+//#if DEBUG
+//import SwiftUI
+//
+//struct ViewControllerRepresentable: UIViewControllerRepresentable {
+//    func updateUIViewController(_ uiView: UIViewController,context: Context) {
+//            // leave this empty
+//    }
+//    func makeUIViewController(context: Context) -> UIViewController{
+//        DiscoverViewController()
+//        }
+//}
+//struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ViewControllerRepresentable()
+//                .ignoresSafeArea()
+//                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
+//                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
+//        }
+//    }
+//}
+//#endif

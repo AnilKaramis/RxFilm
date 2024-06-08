@@ -111,6 +111,24 @@
 			path = DiscoverView;
 			sourceTree = "<group>";
 		};
+		A5A120422C14BC090045F4C3 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				A5A120402C1254630045F4C3 /* ChartViewController.swift */,
+			);
+			path = ChartView;
+			sourceTree = "<group>";
+		};
+		A5A120432C14BC2B0045F4C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */,
+				A53F86CB2C0264ED002BBEA5 /* DiscoverView */,
+				A5A120422C14BC090045F4C3 /* ChartView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A5D8AAE22BFE40A8002F007F = {
 			isa = PBXGroup;
 			children = (
@@ -136,11 +154,9 @@
 		A5D8AAED2BFE40A8002F007F /* RxFilm */ = {
 			isa = PBXGroup;
 			children = (
+				A5A120432C14BC2B0045F4C3 /* View */,
 				A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */,
-				A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */,
-				A5A120402C1254630045F4C3 /* ChartViewController.swift */,
 				A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */,
-				A53F86CB2C0264ED002BBEA5 /* DiscoverView */,
 				A5D8AAF42BFE40A8002F007F /* Main.storyboard */,
 				A5D8AAF72BFE40AA002F007F /* Assets.xcassets */,
 				A5D8AAF92BFE40AA002F007F /* LaunchScreen.storyboard */,
