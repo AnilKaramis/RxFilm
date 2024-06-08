@@ -15,6 +15,7 @@
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
 		A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120402C1254630045F4C3 /* ChartViewController.swift */; };
 		A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */; };
+		A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120472C14CAF30045F4C3 /* CreditViewController.swift */; };
 		A5D8AAEF2BFE40A8002F007F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */; };
 		A5D8AAF12BFE40A8002F007F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */; };
 		A5D8AAF62BFE40A8002F007F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A5D8AAF52BFE40A8002F007F /* Base */; };
@@ -55,6 +56,7 @@
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A5A120402C1254630045F4C3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		A5A120472C14CAF30045F4C3 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		A5D8AAEB2BFE40A8002F007F /* RxFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,8 +130,17 @@
 				A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */,
 				A53F86CB2C0264ED002BBEA5 /* DiscoverView */,
 				A5A120422C14BC090045F4C3 /* ChartView */,
+				A5A120462C14CADC0045F4C3 /* CreditView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A5A120462C14CADC0045F4C3 /* CreditView */ = {
+			isa = PBXGroup;
+			children = (
+				A5A120472C14CAF30045F4C3 /* CreditViewController.swift */,
+			);
+			path = CreditView;
 			sourceTree = "<group>";
 		};
 		A5D8AAE22BFE40A8002F007F = {
@@ -455,6 +466,7 @@
 				A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */,
 				A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */,
 				A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */,
+				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
 				A5D8AB212C000EA7002F007F /* Constant.swift in Sources */,
 			);

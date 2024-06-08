@@ -49,19 +49,18 @@ extension DiscoverCollectionHeaderView {
         self.addSubview(titleLabel)
         self.addSubview(searchField)
         
-        titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.top.equalToSuperview().offset(20)
+        titleLabel.snp.makeConstraints {
+           $0.left.equalToSuperview().offset(20)
+           $0.right.equalToSuperview().offset(-20)
+           $0.top.equalToSuperview().offset(20)
         }
         
-        searchField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.bottom.equalToSuperview().offset(-20)
+        searchField.snp.makeConstraints {
+           $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+           $0.left.equalToSuperview().offset(20)
+           $0.right.equalToSuperview().offset(-20)
+           $0.bottom.equalToSuperview().offset(-20)
         }
-        
     }
 }
 

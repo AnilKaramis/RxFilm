@@ -117,23 +117,23 @@ class ChartTableViewCell: UITableViewCell {
         self.addSubview(posterImage)
         self.addSubview(infoStackView)
         
-        rankLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(10)
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
+        rankLabel.snp.makeConstraints {
+           $0.left.equalToSuperview().offset(10)
+           $0.top.equalToSuperview().offset(10)
+           $0.bottom.equalToSuperview().offset(-10)
         }
         
-        posterImage.snp.makeConstraints { make in
-            make.left.equalTo(rankLabel.snp.right).offset(10)
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
+        posterImage.snp.makeConstraints {
+           $0.left.equalTo(rankLabel.snp.right).offset(10)
+           $0.top.equalToSuperview().offset(10)
+           $0.bottom.equalToSuperview().offset(-10)
         }
         
-        infoStackView.snp.makeConstraints { make in
-            make.left.equalTo(posterImage.snp.right).offset(10)
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
-            make.right.lessThanOrEqualToSuperview().offset(-10)
+        infoStackView.snp.makeConstraints {
+           $0.left.equalTo(posterImage.snp.right).offset(10)
+           $0.top.equalToSuperview().offset(10)
+           $0.bottom.equalToSuperview().offset(-10)
+           $0.right.lessThanOrEqualToSuperview().offset(-10)
         }
     }
     required init?(coder: NSCoder) {
