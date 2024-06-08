@@ -10,7 +10,7 @@
         <!--TabBarController-->
         <scene sceneID="nzr-Tl-7iu">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zu2-nE-Mfc" userLabel="TabBarController" customClass="TabBarController" customModule="RxFilm" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zu2-nE-Mfc" userLabel="TabBarController" customClass="MainTabBarController" customModule="RxFilm" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="snX-0X-1O5">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

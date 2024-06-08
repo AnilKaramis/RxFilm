@@ -13,6 +13,8 @@ class ChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Charts"
+        
         view.backgroundColor = .green
     }
 }

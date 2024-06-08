@@ -21,7 +21,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     let movieTitle : UILabel = {
         lazy var text = UILabel()
-        text.font = UIFont.systemFont(ofSize: 20)
+        text.font = UIFont.systemFont(ofSize: 10)
         text.textColor = .white
         text.numberOfLines = 2
         return text

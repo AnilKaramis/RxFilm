@@ -32,6 +32,8 @@ class DiscoverViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "RxFilm"
+        
         CollectionView.dataSource = self
         CollectionView.delegate = self
         
