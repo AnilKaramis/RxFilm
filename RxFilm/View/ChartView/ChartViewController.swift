@@ -19,7 +19,6 @@ class ChartViewController: UIViewController {
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,9 +26,9 @@ class ChartViewController: UIViewController {
         self.title = "Charts"
         self.view.backgroundColor = UIColor(named: Colors.background)
         
-        //        ChartTableView.delegate = self
+        ChartTableView.delegate = self
         ChartTableView.dataSource = self
-
+        
         SetupConstraints()
     }
     func SetupConstraints() {
@@ -40,11 +39,13 @@ class ChartViewController: UIViewController {
     }
 }
 
-extension ChartViewController: UITableViewDataSource {
+extension ChartViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 40
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
