@@ -29,6 +29,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.addSubview(movieTitle)
         self.addSubview(posterImage)
         

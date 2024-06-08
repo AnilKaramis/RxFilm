@@ -1,4 +1,5 @@
 PODS:
+  - Cosmos (25.0.1)
   - RxCocoa (6.7.1):
     - RxRelay (= 6.7.1)
     - RxSwift (= 6.7.1)
@@ -8,23 +9,26 @@ PODS:
   - SnapKit (5.7.1)
 
 DEPENDENCIES:
+  - Cosmos
   - RxCocoa
   - RxSwift
   - SnapKit
 
 SPEC REPOS:
   trunk:
+    - Cosmos
     - RxCocoa
     - RxRelay
     - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
+  Cosmos: 02db0a1c953107049bfd2d7af19ceef55ecb7e98
   RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
   RxRelay: 4151ba01152436b08271e08410135e099880eae5
   RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: 04440d45af5f471c3cc2fec6922ec2ba44b12906
+PODFILE CHECKSUM: 044510e343e2ca79e1827cb81931eeb2b3148bd0
 
 COCOAPODS: 1.15.2
