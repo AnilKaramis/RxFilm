@@ -56,17 +56,19 @@ extension DiscoverViewController {
     }
 }
 //MARK: -Collection View Configuration
+//TODO: will be deleted when RxCocoa added
 
 extension DiscoverViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Cell Property
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return UICollectionViewCell()}
-        cell.insertData(imageURLString: "", title: "EXAMPLE")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
+        cell.movieTitle.text = "..:::Movies:::.."
+        
         
         
         return cell
