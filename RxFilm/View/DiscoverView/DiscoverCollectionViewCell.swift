@@ -24,6 +24,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         text.font = UIFont.systemFont(ofSize: 10)
         text.textColor = .white
         text.numberOfLines = 2
+        text.minimumScaleFactor = 10
         return text
     }()
     

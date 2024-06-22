@@ -10,6 +10,13 @@ import SnapKit
 
 class DiscoverViewController:UIViewController {
     
+    //Example Data
+    let movies = [
+        MovieFront(title: "Ornekfilm1", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.1, ratingCount: 1234),
+        MovieFront(title: "Spider-Man: No Way Home", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.2, ratingCount: 456),
+        MovieFront(title: "Spider-Man: No Way Home", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.4, ratingCount: 56),
+        MovieFront(title: "Spider-Man: No Way Home", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.6, ratingCount: 678)
+    ]
     
     // CollectionView
     lazy var CollectionView : UICollectionView = {
@@ -60,15 +67,24 @@ extension DiscoverViewController {
 
 extension DiscoverViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Cell Property
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
-        cell.movieTitle.text = "..:::Movies:::.."
+        let movie = movies[indexPath.row]
         
+        cell.movieTitle.text = movie.title
+        DispatchQueue.global().async {
+            guard let imageURL = URL(string: "https://image.tmdb.org/t/p/original/\(movie.posterPath)") else {return}
+            guard let imageData = try? Data(contentsOf: imageURL) else {return}
+            
+            DispatchQueue.main.sync {
+                cell.posterImage.image = UIImage(data: imageData)
+            }
+        }
         
         
         return cell

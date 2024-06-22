@@ -32,6 +32,8 @@ class ChartTableViewCell: UITableViewCell {
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 2
+        label.minimumScaleFactor = 10
         return label
     }()
     
@@ -76,7 +78,7 @@ class ChartTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         let starStackView : UIStackView = {
-            var view = UIStackView()
+            let view = UIStackView()
             //Add View
             view.addArrangedSubview(starRating)
             view.addArrangedSubview(ratingCountLabel)
@@ -90,7 +92,7 @@ class ChartTableViewCell: UITableViewCell {
         }()
         
         let infoStackView : UIStackView = {
-            var view = UIStackView()
+            let view = UIStackView()
             let emptyView = UIView()
             
             emptyView.heightAnchor.constraint(equalToConstant: 3).isActive = true
@@ -150,12 +152,12 @@ extension ChartTableViewCell {
     }
     
     /// to fetch the data afterwards
-    func setSampleData(rank: Int) {
+    func setSampleData(rank: Int,movie: MovieFront) {
         rankLabel.text = "\(rank+1)"
-        titleLabel.text = "Title"
-        genreLabel.text = "Genre"
-        releaseDateLabel.text = "yyyy.mm.dd"
-        starRating.rating = 3.0
-        ratingCountLabel.text = "(123)"
+        titleLabel.text = movie.title
+        genreLabel.text = "movie.genre"
+        releaseDateLabel.text = movie.releaseDate
+        starRating.rating = movie.ratingScore
+        ratingCountLabel.text = "\(movie.ratingCount)"
     }
 }
