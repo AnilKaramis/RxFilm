@@ -10,6 +10,9 @@
 		71AFBD7A84BFF8E254CD12C1 /* Pods_RxFilm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D2120FD160D7BB309D3F95 /* Pods_RxFilm.framework */; };
 		775EF224FEA4708367AA54EE /* Pods_RxFilmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CFFBEAAE03C42A64E9D493 /* Pods_RxFilmTests.framework */; };
 		A51831F52C045F8B00974B16 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51831F42C045F8B00974B16 /* DiscoverCollectionViewCell.swift */; };
+		A53477532C27391F000DD81E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477522C27391F000DD81E /* APIService.swift */; };
+		A53477552C27392A000DD81E /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477542C27392A000DD81E /* MovieList.swift */; };
+		A53477572C273935000DD81E /* MovieFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477562C273935000DD81E /* MovieFront.swift */; };
 		A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */; };
 		A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
@@ -51,6 +54,9 @@
 		A0BD9272F200B22B1FF52AE3 /* Pods_RxFilm_RxFilmUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFilm_RxFilmUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D2120FD160D7BB309D3F95 /* Pods_RxFilm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFilm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51831F42C045F8B00974B16 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
+		A53477522C27391F000DD81E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A53477542C27392A000DD81E /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		A53477562C273935000DD81E /* MovieFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFront.swift; sourceTree = "<group>"; };
 		A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -105,6 +111,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A534774F2C2738FC000DD81E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A53477512C27390C000DD81E /* Service */,
+				A53477502C273904000DD81E /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A53477502C273904000DD81E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A53477542C27392A000DD81E /* MovieList.swift */,
+				A53477562C273935000DD81E /* MovieFront.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A53477512C27390C000DD81E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A53477522C27391F000DD81E /* APIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		A53F86CB2C0264ED002BBEA5 /* DiscoverView */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +200,7 @@
 		A5D8AAED2BFE40A8002F007F /* RxFilm */ = {
 			isa = PBXGroup;
 			children = (
+				A534774F2C2738FC000DD81E /* Domain */,
 				A5A120432C14BC2B0045F4C3 /* View */,
 				A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */,
 				A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */,
@@ -463,9 +496,12 @@
 				A51831F52C045F8B00974B16 /* DiscoverCollectionViewCell.swift in Sources */,
 				A5D8AAEF2BFE40A8002F007F /* AppDelegate.swift in Sources */,
 				A5D8AAF12BFE40A8002F007F /* SceneDelegate.swift in Sources */,
+				A53477532C27391F000DD81E /* APIService.swift in Sources */,
 				A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */,
+				A53477552C27392A000DD81E /* MovieList.swift in Sources */,
 				A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */,
 				A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */,
+				A53477572C273935000DD81E /* MovieFront.swift in Sources */,
 				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
 				A5D8AB212C000EA7002F007F /* Constant.swift in Sources */,
