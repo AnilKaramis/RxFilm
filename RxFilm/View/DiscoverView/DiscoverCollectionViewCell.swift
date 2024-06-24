@@ -52,13 +52,11 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
         posterImage.snp.makeConstraints {
             $0.left.right.greaterThanOrEqualToSuperview()
-            $0.width.lessThanOrEqualToSuperview()
-            $0.height.lessThanOrEqualToSuperview().offset(-40)
+            $0.bottom.lessThanOrEqualToSuperview()
         }
         
-        movieTitle.snp.makeConstraints {
-            $0.height.greaterThanOrEqualTo(40)
-        }
+        movieTitle.setContentHuggingPriority(.required, for: .vertical)
+        movieTitle.setContentHuggingPriority(.required, for: .vertical)
     }
     
     required init?(coder: NSCoder) {
