@@ -15,9 +15,9 @@ class ChartViewController: UIViewController {
     
     let movies = [
         MovieFront(title: "Ornekfilm1", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.1, ratingCount: 1234),
-        MovieFront(title: "Spider-Man: No Way Home", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.2, ratingCount: 456),
-        MovieFront(title: "Spider-Man: No Way Home", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.4, ratingCount: 56),
-        MovieFront(title: "Spider-Man: No Way Home", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.6, ratingCount: 678)
+        MovieFront(title: "Ornekfilm2", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.2, ratingCount: 456),
+        MovieFront(title: "Ornekfilm3", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.4, ratingCount: 56),
+        MovieFront(title: "Ornekfilm4", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.6, ratingCount: 678)
     ]
     
     let ChartTableView : UITableView = {
@@ -47,13 +47,10 @@ class ChartViewController: UIViewController {
         ChartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
     }
 }
-
+//MARK: -Data Source
 extension ChartViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,10 +60,8 @@ extension ChartViewController: UITableViewDataSource,UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.chart_table_cell, for: indexPath) as? ChartTableViewCell else { fatalError("Unable to dequeue ReminderCell") }
         
         // set the text from the data model
-        
-//        cell.textLabel?.text = "\(indexPath.row). Movie moview "
-//        cell.imageView?.image = UIImage(named: "img_placeholder")
-        cell.setSampleData(rank: indexPath.row, movie: movies[indexPath.row])
+
+        cell.setData(rank: indexPath.row, movie: movies[indexPath.row])
         return cell
     }
 }

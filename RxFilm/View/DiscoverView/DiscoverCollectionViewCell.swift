@@ -14,7 +14,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     let posterImage : UIImageView = {
         lazy var imageView = UIImageView()
-        imageView.image = UIImage(named: "img_placeholder")
+        imageView.image = UIImage(named: Image.img_placeholder)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -31,20 +31,32 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubview(movieTitle)
-        self.addSubview(posterImage)
+        let stackView : UIStackView = {
+            var view = UIStackView()
+            view.addArrangedSubview(posterImage)
+            view.addArrangedSubview(movieTitle)
+            
+            view.axis = .vertical
+            view.distribution = .fill
+            view.alignment = .fill
+            view.spacing = 0
+            return view
+        }()
+        
+        self.addSubview(stackView)
         
         //MARK: Constraints Properties
         
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         posterImage.snp.makeConstraints {
-            $0.top.left.right.equalToSuperview()
+            $0.left.right.greaterThanOrEqualToSuperview()
+            $0.width.lessThanOrEqualToSuperview()
         }
         
         movieTitle.snp.makeConstraints {
-            $0.top.equalTo(posterImage.snp.bottom).offset(5)
-            $0.bottom.greaterThanOrEqualToSuperview()
-            $0.leading.equalTo(posterImage.snp.leading)
-            $0.trailing.equalTo(posterImage.snp.trailing)
+            $0.height.greaterThanOrEqualTo(40)
         }
     }
     
@@ -55,10 +67,9 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
 //MARK: -Insert data to cell
 extension DiscoverCollectionViewCell {
     
-    func insertData(movie:MovieFront) {
+    func setData(movie:MovieFront) {
         
-        movieTitle.text = movie.title
-        movieTitle.textColor = .red
+        self.movieTitle.text = movie.title
         
         DispatchQueue.global().async {
             guard let imageURL = URL(string: "https://image.tmdb.org/t/p/original/\(movie.posterPath)") else {

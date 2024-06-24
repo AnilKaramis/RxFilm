@@ -120,22 +120,23 @@ class ChartTableViewCell: UITableViewCell {
         self.addSubview(infoStackView)
         
         rankLabel.snp.makeConstraints {
-           $0.left.equalToSuperview().offset(10)
-           $0.top.equalToSuperview().offset(10)
-           $0.bottom.equalToSuperview().offset(-10)
+            $0.left.equalToSuperview().offset(10)
+            $0.top.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
         }
         
         posterImage.snp.makeConstraints {
-           $0.left.equalTo(rankLabel.snp.right).offset(10)
-           $0.top.equalToSuperview().offset(10)
-           $0.bottom.equalToSuperview().offset(-10)
+            $0.left.equalTo(rankLabel.snp.right).offset(10)
+            $0.top.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.width.equalTo(100)
         }
         
         infoStackView.snp.makeConstraints {
-           $0.left.equalTo(posterImage.snp.right).offset(10)
-           $0.top.equalToSuperview().offset(10)
-           $0.bottom.equalToSuperview().offset(-10)
-           $0.right.lessThanOrEqualToSuperview().offset(-10)
+            $0.left.equalTo(posterImage.snp.right).offset(10)
+            $0.top.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.right.lessThanOrEqualToSuperview().offset(-10)
         }
     }
     required init?(coder: NSCoder) {
@@ -152,12 +153,21 @@ extension ChartTableViewCell {
     }
     
     /// to fetch the data afterwards
-    func setSampleData(rank: Int,movie: MovieFront) {
+    func setData(rank: Int,movie: MovieFront) {
         rankLabel.text = "\(rank+1)"
         titleLabel.text = movie.title
-        genreLabel.text = "movie.genre"
+        genreLabel.text = movie.genre
         releaseDateLabel.text = movie.releaseDate
         starRating.rating = movie.ratingScore
         ratingCountLabel.text = "\(movie.ratingCount)"
+        
+        DispatchQueue.global().async {
+            guard let imageURL = URL(string: "https://image.tmdb.org/t/p/original/\(movie.posterPath)") else { return }
+            guard let imageData = try? Data(contentsOf: imageURL) else {return}
+            
+            DispatchQueue.main.sync {
+                self.posterImage.image = UIImage(data: imageData)
+            }
+        }
     }
 }

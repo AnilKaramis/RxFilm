@@ -20,3 +20,6 @@ struct Identifiers {
     static let chart_table_cell = "ChartTableCell"
     static let chart_table_header = "ChartTableHeader"
 }
+struct Image {
+    static let img_placeholder = "img_placeholder"
+}
