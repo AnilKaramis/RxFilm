@@ -12,13 +12,9 @@ import SwiftUI
 class ChartViewController: UIViewController {
     
     // Example Data
+    /// iki model eklendi isim degisikligi yapip burada tanimlanacak !
     
-    let movies = [
-        MovieFront(title: "Ornekfilm1", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.1, ratingCount: 1234),
-        MovieFront(title: "Ornekfilm2", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.2, ratingCount: 456),
-        MovieFront(title: "Ornekfilm3", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.4, ratingCount: 56),
-        MovieFront(title: "Ornekfilm4", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.6, ratingCount: 678)
-    ]
+    let viewModel = ChartViewModel()
     
     let ChartTableView : UITableView = {
         var tableView = UITableView()
@@ -50,7 +46,7 @@ class ChartViewController: UIViewController {
 //MARK: -Data Source
 extension ChartViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return viewModel.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,7 +57,7 @@ extension ChartViewController: UITableViewDataSource,UITableViewDelegate {
         
         // set the text from the data model
 
-        cell.setData(rank: indexPath.row, movie: movies[indexPath.row])
+        cell.setData(rank: indexPath.row, movie: viewModel.movies[indexPath.row])
         return cell
     }
 }

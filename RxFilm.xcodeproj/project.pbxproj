@@ -13,6 +13,8 @@
 		A53477532C27391F000DD81E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477522C27391F000DD81E /* APIService.swift */; };
 		A53477552C27392A000DD81E /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477542C27392A000DD81E /* MovieList.swift */; };
 		A53477572C273935000DD81E /* MovieFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477562C273935000DD81E /* MovieFront.swift */; };
+		A534776B2C2A1180000DD81E /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534776A2C2A1180000DD81E /* ChartViewModel.swift */; };
+		A53477712C2A1202000DD81E /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53477702C2A1202000DD81E /* DiscoverViewModel.swift */; };
 		A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */; };
 		A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
@@ -57,6 +59,8 @@
 		A53477522C27391F000DD81E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A53477542C27392A000DD81E /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		A53477562C273935000DD81E /* MovieFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFront.swift; sourceTree = "<group>"; };
+		A534776A2C2A1180000DD81E /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		A53477702C2A1202000DD81E /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -137,12 +141,46 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		A53F86CB2C0264ED002BBEA5 /* DiscoverView */ = {
+		A53477682C2A115B000DD81E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A534776A2C2A1180000DD81E /* ChartViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A53477692C2A1164000DD81E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */,
+				A5A120402C1254630045F4C3 /* ChartViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A534776C2C2A11BD000DD81E /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A53F86CC2C026502002BBEA5 /* DiscoverViewController.swift */,
 				A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */,
 				A51831F42C045F8B00974B16 /* DiscoverCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A534776D2C2A11C5000DD81E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A53477702C2A1202000DD81E /* DiscoverViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A53F86CB2C0264ED002BBEA5 /* DiscoverView */ = {
+			isa = PBXGroup;
+			children = (
+				A534776D2C2A11C5000DD81E /* Model */,
+				A534776C2C2A11BD000DD81E /* View */,
 			);
 			path = DiscoverView;
 			sourceTree = "<group>";
@@ -150,8 +188,8 @@
 		A5A120422C14BC090045F4C3 /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
-				A5A120402C1254630045F4C3 /* ChartViewController.swift */,
-				A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */,
+				A53477692C2A1164000DD81E /* View */,
+				A53477682C2A115B000DD81E /* Model */,
 			);
 			path = ChartView;
 			sourceTree = "<group>";
@@ -504,7 +542,9 @@
 				A53477572C273935000DD81E /* MovieFront.swift in Sources */,
 				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
+				A53477712C2A1202000DD81E /* DiscoverViewModel.swift in Sources */,
 				A5D8AB212C000EA7002F007F /* Constant.swift in Sources */,
+				A534776B2C2A1180000DD81E /* ChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
