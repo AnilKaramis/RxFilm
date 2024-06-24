@@ -53,6 +53,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         posterImage.snp.makeConstraints {
             $0.left.right.greaterThanOrEqualToSuperview()
             $0.width.lessThanOrEqualToSuperview()
+            $0.height.lessThanOrEqualToSuperview().offset(-40)
         }
         
         movieTitle.snp.makeConstraints {

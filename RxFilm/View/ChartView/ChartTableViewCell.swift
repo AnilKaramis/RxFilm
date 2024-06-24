@@ -136,7 +136,7 @@ class ChartTableViewCell: UITableViewCell {
             $0.left.equalTo(posterImage.snp.right).offset(10)
             $0.top.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-10)
-            $0.right.lessThanOrEqualToSuperview().offset(-10)
+            $0.right.lessThanOrEqualToSuperview().offset(-15)
         }
     }
     required init?(coder: NSCoder) {
@@ -158,7 +158,7 @@ extension ChartTableViewCell {
         titleLabel.text = movie.title
         genreLabel.text = movie.genre
         releaseDateLabel.text = movie.releaseDate
-        starRating.rating = movie.ratingScore
+        starRating.rating = movie.ratingScore/2
         ratingCountLabel.text = "\(movie.ratingCount)"
         
         DispatchQueue.global().async {
