@@ -7,11 +7,13 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class DiscoverViewController:UIViewController {
     
     ///Model tanimla !
-    let DiscoverViewModel = DiscoverViewModel()
+    let ViewModel = DiscoverViewModel()
     
     // CollectionView
     lazy var CollectionView : UICollectionView = {
@@ -41,6 +43,8 @@ class DiscoverViewController:UIViewController {
         CollectionView.delegate = self
         
         initUI()
+        
+       
     }
 }
 
@@ -62,13 +66,13 @@ extension DiscoverViewController {
 
 extension DiscoverViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return ViewModel.movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Cell Property
-        let movie = movies[indexPath.row]
+        let movie = ViewModel.movies[indexPath.row]
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
         cell.setData(movie: movie)
