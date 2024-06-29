@@ -15,6 +15,9 @@ class ChartViewModel {
 //MARK: -Map
     
     init () {
+    }
+    func requestData() {
+        
         let url = APIService.configureUrlString(category: .NowPlaying, language: .English, page: 1)
         _ = APIService.fetchWithRx(url: url, retries: 2)
             .map { data -> [MovieListResult] in
@@ -24,6 +27,7 @@ class ChartViewModel {
                 return response.results
             }.map { return $0.map { return MovieFront.convertFromMovieInfo(movie: $0) } }
             .take(1)
+            .debug()
             .bind(to: movieFrontObservable)
     }
 }

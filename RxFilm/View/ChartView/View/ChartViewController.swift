@@ -30,6 +30,8 @@ class ChartViewController: UIViewController {
         self.view.backgroundColor = UIColor(named: Colors.background)
         self.view.addSubview(ChartTableView)
         
+        viewModel.requestData()
+        
         Layout()
         bindDataModel()
     }
@@ -42,6 +44,7 @@ class ChartViewController: UIViewController {
 extension ChartViewController {
     func bindDataModel() {
         viewModel.movieFrontObservable
+            .debug()
             .bind(to: ChartTableView.rx.items(cellIdentifier: Identifiers.chart_table_cell, cellType: ChartTableViewCell.self)) { index, movie, cell in
                 cell.setData(rank: index, movie: movie)
             }

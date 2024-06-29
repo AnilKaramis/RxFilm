@@ -23,7 +23,7 @@ class DiscoverViewController:UIViewController {
         flowLayout.headerReferenceSize = CGSize(width: self.preferredContentSize.width, height: 180)
         flowLayout.minimumLineSpacing = 20
         flowLayout.minimumInteritemSpacing = 20
-       
+        
         
         // CollectionView
         
@@ -39,52 +39,55 @@ class DiscoverViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initUI()
-        
-        ViewModel.movieFrontObservable.bind(to: CollectionView.rx.items(cellIdentifier: Identifiers.discover_collection_cell,cellType: DiscoverCollectionViewCell.self)) { index, movie, cell in
-            cell.setData(movie: movie)
-            print(movie.title)
-        }
-        .disposed(by: disposeBag)
-    }
-}
-
-//MARK: -Extension ViewDidLoad
-
-extension DiscoverViewController {
-    
-    private func initUI() {
-        
         self.title = "Home"
         
         CollectionView.delegate = self
         
+        //View Property
+        
         self.view.backgroundColor = UIColor(named: Colors.background)
         super.view.addSubview(CollectionView)
         
+        Layout()
+        movieObservable()
+        
+    }
+}
+//MARK: -Extension ViewDidLoad
+
+extension DiscoverViewController {
+    private func Layout() {
         CollectionView.snp.makeConstraints {
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
+    }
+    private func movieObservable() {
+        ViewModel.movieFrontObservable
+            .debug()
+            .bind(to: CollectionView.rx.items(cellIdentifier: Identifiers.discover_collection_cell,cellType: DiscoverCollectionViewCell.self)) { index, movie, cell in
+            cell.setData(movie: movie)
+        }
+        .disposed(by: disposeBag)
     }
 }
 //MARK: -Collection View Configuration
 //TODO: will be deleted when RxCocoa added
 
 extension DiscoverViewController {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return ViewModel.movies.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        
-//        //Cell Property
-//        let movie = ViewModel.movies[indexPath.row]
-//        
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
-//        cell.setData(movie: movie)
-//        
-//        return cell
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //        return ViewModel.movies.count
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    //
+    //        //Cell Property
+    //        let movie = ViewModel.movies[indexPath.row]
+    //
+    //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
+    //        cell.setData(movie: movie)
+    //
+    //        return cell
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -94,7 +97,7 @@ extension DiscoverViewController {
 extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as! DiscoverCollectionViewCell
+        //        let cell = collectionView.cellForItem(at: indexPath) as! DiscoverCollectionViewCell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = (collectionView.frame.size.width - 60)/2
