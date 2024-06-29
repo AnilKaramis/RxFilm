@@ -12,17 +12,18 @@ import RxCocoa
 
 class DiscoverViewController:UIViewController {
     
-    ///Model tanimla !
+    
     let ViewModel = DiscoverViewModel()
     let disposeBag = DisposeBag()
     
     // CollectionView
     lazy var CollectionView : UICollectionView = {
         var flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-        //        flowLayout.itemSize = CGSize(width: 150, height: 150)
+        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         flowLayout.headerReferenceSize = CGSize(width: self.preferredContentSize.width, height: 180)
-        //        return UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+        flowLayout.minimumLineSpacing = 20
+        flowLayout.minimumInteritemSpacing = 20
+       
         
         // CollectionView
         
@@ -30,6 +31,7 @@ class DiscoverViewController:UIViewController {
         
         collectionView.register(DiscoverCollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
         collectionView.register(DiscoverCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header)
+        collectionView.backgroundColor = UIColor(named: Colors.background)
         
         return collectionView
     }()
@@ -37,26 +39,27 @@ class DiscoverViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "RxFilm"
-        
-        self.view.backgroundColor = UIColor(named: Colors.background)
-//        CollectionView.dataSource = self
-        CollectionView.delegate = self
-        
         initUI()
         
-        //Fetch Data
-       
-       
+        ViewModel.movieFrontObservable.bind(to: CollectionView.rx.items(cellIdentifier: Identifiers.discover_collection_cell,cellType: DiscoverCollectionViewCell.self)) { index, movie, cell in
+            cell.setData(movie: movie)
+            print(movie.title)
+        }
+        .disposed(by: disposeBag)
     }
 }
 
-//MARK: -Draw UI
+//MARK: -Extension ViewDidLoad
 
 extension DiscoverViewController {
     
     private func initUI() {
         
+        self.title = "Home"
+        
+        CollectionView.delegate = self
+        
+        self.view.backgroundColor = UIColor(named: Colors.background)
         super.view.addSubview(CollectionView)
         
         CollectionView.snp.makeConstraints {
@@ -94,7 +97,7 @@ extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDeleg
 //        let cell = collectionView.cellForItem(at: indexPath) as! DiscoverCollectionViewCell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = (collectionView.frame.size.width - 60)/3
+        let itemWidth = (collectionView.frame.size.width - 60)/2
         return CGSize(width: itemWidth, height: itemWidth * 1.75)
     }
 }
