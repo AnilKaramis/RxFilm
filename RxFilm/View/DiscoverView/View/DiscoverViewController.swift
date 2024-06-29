@@ -14,6 +14,7 @@ class DiscoverViewController:UIViewController {
     
     ///Model tanimla !
     let ViewModel = DiscoverViewModel()
+    let disposeBag = DisposeBag()
     
     // CollectionView
     lazy var CollectionView : UICollectionView = {
@@ -39,11 +40,13 @@ class DiscoverViewController:UIViewController {
         self.title = "RxFilm"
         
         self.view.backgroundColor = UIColor(named: Colors.background)
-        CollectionView.dataSource = self
+//        CollectionView.dataSource = self
         CollectionView.delegate = self
         
         initUI()
         
+        //Fetch Data
+       
        
     }
 }
@@ -64,21 +67,21 @@ extension DiscoverViewController {
 //MARK: -Collection View Configuration
 //TODO: will be deleted when RxCocoa added
 
-extension DiscoverViewController:UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ViewModel.movies.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //Cell Property
-        let movie = ViewModel.movies[indexPath.row]
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
-        cell.setData(movie: movie)
-        
-        return cell
-    }
+extension DiscoverViewController {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return ViewModel.movies.count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        
+//        //Cell Property
+//        let movie = ViewModel.movies[indexPath.row]
+//        
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
+//        cell.setData(movie: movie)
+//        
+//        return cell
+//    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -88,7 +91,6 @@ extension DiscoverViewController:UICollectionViewDataSource {
 extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
 //        let cell = collectionView.cellForItem(at: indexPath) as! DiscoverCollectionViewCell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -96,26 +98,3 @@ extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDeleg
         return CGSize(width: itemWidth, height: itemWidth * 1.75)
     }
 }
-
-//#if DEBUG
-//import SwiftUI
-//
-//struct ViewControllerRepresentable: UIViewControllerRepresentable {
-//    func updateUIViewController(_ uiView: UIViewController,context: Context) {
-//            // leave this empty
-//    }
-//    func makeUIViewController(context: Context) -> UIViewController{
-//        DiscoverViewController()
-//        }
-//}
-//struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            ViewControllerRepresentable()
-//                .ignoresSafeArea()
-//                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-//                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-//        }
-//    }
-//}
-//#endif

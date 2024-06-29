@@ -16,3 +16,6 @@ class ChartViewModel {
         MovieFront(title: "Ornekfilm4", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", genre: "Genre", releaseDate: "2023-10-10", ratingScore: 9.6, ratingCount: 678)
     ]
 }
+struct sonuc {
+    let ornek: String
+}

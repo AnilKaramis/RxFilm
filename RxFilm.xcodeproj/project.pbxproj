@@ -185,6 +185,15 @@
 			path = DiscoverView;
 			sourceTree = "<group>";
 		};
+		A54C8CFC2C2F98F0005826FD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A5D8AAF42BFE40A8002F007F /* Main.storyboard */,
+				A5D8AAF92BFE40AA002F007F /* LaunchScreen.storyboard */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		A5A120422C14BC090045F4C3 /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,13 +247,12 @@
 		A5D8AAED2BFE40A8002F007F /* RxFilm */ = {
 			isa = PBXGroup;
 			children = (
+				A54C8CFC2C2F98F0005826FD /* Base */,
 				A534774F2C2738FC000DD81E /* Domain */,
 				A5A120432C14BC2B0045F4C3 /* View */,
 				A5D8AAEE2BFE40A8002F007F /* AppDelegate.swift */,
 				A5D8AAF02BFE40A8002F007F /* SceneDelegate.swift */,
-				A5D8AAF42BFE40A8002F007F /* Main.storyboard */,
 				A5D8AAF72BFE40AA002F007F /* Assets.xcassets */,
-				A5D8AAF92BFE40AA002F007F /* LaunchScreen.storyboard */,
 				A5D8AAFC2BFE40AA002F007F /* Info.plist */,
 				A5D8AB202C000EA7002F007F /* Constant.swift */,
 			);

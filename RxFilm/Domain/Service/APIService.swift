@@ -10,40 +10,94 @@ import RxSwift
 
 class APIService {
     
-    let session = URLSession(configuration: .default) /// .epheral bellek uzerinde bulunan cerezleri oturum sonalndirildiginda siler.
-    func fetchData() {
-        var completeURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=9c070ed6542142b55eb044440c144360&language=en-US&page=1"
-
-        let retyLimit = 2
-        
-        
+    ///Insert api
+    static func configureUrlString(category: MovieListCategory, language: Language,page:Int) -> String {
+        return "API-KEY"
     }
-    private func performRequest(url:String, retries: Int) {
+    static func fetchRequest(url:String,retries:Int,onComlete:@escaping(Result<Data, Error>) ->Void) {
         
-        guard let UrlTask = URL(string: url) else {return}
+        guard let url = URL(string: url) else { return }
         
-        let task = session.dataTask(with: UrlTask) {[self] (data, response, error) in
-            
-            if error != nil {
-                print(error!)
+        let task = URLSession(configuration: .default).dataTask(with: url) { data, response, error in
+            if let error = error {
+                onComlete(.failure(error))
                 return
             }
-            guard let safeData = data else {return}
-            
-            //Decode JSON
-            do {
-                let result = try JSONDecoder().decode(MovieList.self, from: safeData)
-            }catch {
-                print(error)
-                if retries > 0 {
-                    print("\(retries) retries remaining... Retrying")
-                    performRequest(url: url, retries: retries-1)
-                } else {
-                    print("\(retries) retries remaining... Exit with failure")
-                    return
-                }
+            guard let safeData = data else {
+               let httpResponse = response as? HTTPURLResponse
+                onComlete(.failure(NSError(domain: "", code: httpResponse?.statusCode ?? 0, userInfo: nil)))
+                return
             }
+            onComlete(.success(safeData))
         }
         task.resume()
     }
 }
+
+enum MovieListCategory {
+    case Popular, Upcoming, TopRated,NowPlaying
+    
+    var key: String {
+        switch self {
+        case.Popular: return "popular"
+        case.Upcoming: return "upcoming"
+        case.TopRated: return"top_rated"
+        case .NowPlaying: return "now_playing"
+        }
+    }
+}
+
+enum Language {
+    case Turkish, English
+    
+    var key: String {
+        switch self{
+        case .English: return "en-US"
+        case .Turkish: return "tu-TR"
+            
+        }
+    }
+}
+
+
+
+
+
+
+//    let session = URLSession(configuration: .default) /// .epheral bellek uzerinde bulunan cerezleri oturum sonalndirildiginda siler.
+//    func fetchData() {
+//        var completeURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=9c070ed6542142b55eb044440c144360&language=en-US&page=1"
+//
+//        let retyLimit = 2
+//        
+//        
+//    }
+//    private func performRequest(url:String, retries: Int) {
+//        
+//        guard let UrlTask = URL(string: url) else {return}
+//        
+//        let task = session.dataTask(with: UrlTask) {[self] (data, response, error) in
+//            
+//            if error != nil {
+//                print(error!)
+//                return
+//            }
+//            guard let safeData = data else {return}
+//            
+//            //Decode JSON
+//            do {
+//                let result = try JSONDecoder().decode(MovieList.self, from: safeData)
+//            }catch {
+//                print(error)
+//                if retries > 0 {
+//                    print("\(retries) retries remaining... Retrying")
+//                    performRequest(url: url, retries: retries-1)
+//                } else {
+//                    print("\(retries) retries remaining... Exit with failure")
+//                    return
+//                }
+//            }
+//        }
+//        task.resume()
+//    }
+//}

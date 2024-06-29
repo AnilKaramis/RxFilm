@@ -146,6 +146,7 @@ public final class BehaviorSubject<Element>
             self.disposed = true
             self.observers.removeAll()
             self.stoppedEvent = nil
+            
         }
     }
 
