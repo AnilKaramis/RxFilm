@@ -9,6 +9,7 @@ target 'RxFilm' do
   pod 'RxCocoa'
   pod 'SnapKit'
   pod 'Cosmos'
+  pod 'RxDataSources'
 
   # Pods for RxFilm
 
