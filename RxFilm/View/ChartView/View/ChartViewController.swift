@@ -7,20 +7,18 @@
 
 import SnapKit
 import UIKit
-import SwiftUI
+import RxSwift
+import RxCocoa
 
 class ChartViewController: UIViewController {
     
-    // Example Data
-    /// iki model eklendi isim degisikligi yapip burada tanimlanacak !
-    
     let viewModel = ChartViewModel()
+    let disposeBag = DisposeBag()
     
     let ChartTableView : UITableView = {
         var tableView = UITableView()
         tableView.backgroundColor = UIColor(named: Colors.background)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Identifiers.chart_table_cell)
-        tableView.backgroundColor = UIColor(named: Colors.background)
+        tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: Identifiers.chart_table_cell)
         return tableView
     }()
     
@@ -30,34 +28,23 @@ class ChartViewController: UIViewController {
         // View Property
         self.title = "Charts"
         self.view.backgroundColor = UIColor(named: Colors.background)
-        
-//        ChartTableView.delegate = self
-        ChartTableView.dataSource = self
-        
-        SetupConstraints()
-    }
-    func SetupConstraints() {
-        
         self.view.addSubview(ChartTableView)
+        
+        Layout()
+        bindDataModel()
+    }
+    func Layout() {
         
         ChartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
     }
 }
-//MARK: -Data Source
-extension ChartViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.movies.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // create a new cell if needed or reuse an old one
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.chart_table_cell, for: indexPath) as? ChartTableViewCell else { fatalError("Unable to dequeue ReminderCell") }
-        
-        // set the text from the data model
-
-        cell.setData(rank: indexPath.row, movie: viewModel.movies[indexPath.row])
-        return cell
+//MARK: Data Binding
+extension ChartViewController {
+    func bindDataModel() {
+        viewModel.movieFrontObservable
+            .bind(to: ChartTableView.rx.items(cellIdentifier: Identifiers.chart_table_cell, cellType: ChartTableViewCell.self)) { index, movie, cell in
+                cell.setData(rank: index, movie: movie)
+            }
+            .disposed(by: disposeBag)
     }
 }
