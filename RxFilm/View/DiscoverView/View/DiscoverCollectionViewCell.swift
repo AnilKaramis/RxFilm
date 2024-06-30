@@ -71,7 +71,7 @@ extension DiscoverCollectionViewCell {
         self.movieTitle.text = movie.title
         
         DispatchQueue.global().async {
-            guard let imageURL = URL(string: "https://image.tmdb.org/t/p/original/\(movie.posterPath)") else {
+            guard let imageURL = URL(string: movie.posterPath) else {
                 return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             

@@ -26,7 +26,6 @@ class DiscoverViewModel {
                 return [DiscoverCollectionViewSection(items: items)]
             })
             .take(1)
-            .debug()
             .bind(to: movieFrontObservable)
     }
 }
