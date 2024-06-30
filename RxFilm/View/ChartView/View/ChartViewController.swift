@@ -15,6 +15,8 @@ class ChartViewController: UIViewController {
     let viewModel = ChartViewModel()
     let disposeBag = DisposeBag()
     
+    //MARK: UI Properties
+    
     let ChartTableView : UITableView = {
         var tableView = UITableView()
         tableView.backgroundColor = UIColor(named: Colors.background)
@@ -33,21 +35,22 @@ class ChartViewController: UIViewController {
         viewModel.requestData()
         
         Layout()
-        bindDataModel()
-    }
-    func Layout() {
-        
-        ChartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
+        bindData()
     }
 }
 //MARK: Data Binding
 extension ChartViewController {
-    func bindDataModel() {
+    func bindData() {
+        
         viewModel.movieFrontObservable
             .debug()
             .bind(to: ChartTableView.rx.items(cellIdentifier: Identifiers.chart_table_cell, cellType: ChartTableViewCell.self)) { index, movie, cell in
                 cell.setData(rank: index, movie: movie)
             }
             .disposed(by: disposeBag)
+    }
+    func Layout() {
+        
+        ChartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
     }
 }

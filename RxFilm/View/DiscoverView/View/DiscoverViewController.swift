@@ -39,29 +39,26 @@ class DiscoverViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Home"
-        
         CollectionView.delegate = self
-        
-        //View Property
-        
-        self.view.backgroundColor = UIColor(named: Colors.background)
-        super.view.addSubview(CollectionView)
-        
+  
         Layout()
-        movieObservable()
+        bindData()
         
+        ViewModel.requestData()
     }
 }
 //MARK: -Extension ViewDidLoad
 
 extension DiscoverViewController {
     private func Layout() {
+        self.title = "Home"
+        self.view.backgroundColor = UIColor(named: Colors.background)
+        super.view.addSubview(CollectionView)
         CollectionView.snp.makeConstraints {
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
-    private func movieObservable() {
+    private func bindData() {
         ViewModel.movieFrontObservable
             .debug()
             .bind(to: CollectionView.rx.items(cellIdentifier: Identifiers.discover_collection_cell,cellType: DiscoverCollectionViewCell.self)) { index, movie, cell in
