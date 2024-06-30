@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class DiscoverViewController:UIViewController {
-    
-    
+
     let ViewModel = DiscoverViewModel()
     let disposeBag = DisposeBag()
     
@@ -60,32 +60,14 @@ extension DiscoverViewController {
     }
     private func bindData() {
         ViewModel.movieFrontObservable
-            .debug()
-            .bind(to: CollectionView.rx.items(cellIdentifier: Identifiers.discover_collection_cell,cellType: DiscoverCollectionViewCell.self)) { index, movie, cell in
-            cell.setData(movie: movie)
-        }
-        .disposed(by: disposeBag)
+            .bind(to: CollectionView.rx.items(dataSource: ViewModel.dataSource))
+            .disposed(by: disposeBag)
     }
 }
 //MARK: -Collection View Configuration
-//TODO: will be deleted when RxCocoa added
 
 extension DiscoverViewController {
-    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //        return ViewModel.movies.count
-    //    }
-    //
-    //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    //
-    //        //Cell Property
-    //        let movie = ViewModel.movies[indexPath.row]
-    //
-    //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.discover_collection_cell, for: indexPath) as? DiscoverCollectionViewCell else { return DiscoverCollectionViewCell()}
-    //        cell.setData(movie: movie)
-    //
-    //        return cell
-    //    }
-    
+  
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifiers.discover_collection_header, for: indexPath)
