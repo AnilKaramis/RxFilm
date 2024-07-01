@@ -33,7 +33,7 @@ struct MovieListResult: Codable {
     let genreIDS: [Int]
     let id: Int
     let originalTitle, overview: String
-    let originalLanguage: OriginalLanguage?
+    let originalLanguage: String
     let popularity: Double
     let posterPath, releaseDate, title: String
     let video: Bool
