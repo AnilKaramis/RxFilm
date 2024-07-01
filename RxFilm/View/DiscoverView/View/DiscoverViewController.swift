@@ -64,20 +64,10 @@ extension DiscoverViewController {
             .disposed(by: disposeBag)
     }
 }
-//MARK: -Collection View Configuration
+//MARK: -CollectionView Frame
 
-extension DiscoverViewController {
-  
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifiers.discover_collection_header, for: indexPath)
-    }
-}
 extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let cell = collectionView.cellForItem(at: indexPath) as! DiscoverCollectionViewCell
-    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = (collectionView.frame.size.width - 60)/2
         return CGSize(width: itemWidth, height: itemWidth * 1.75)
