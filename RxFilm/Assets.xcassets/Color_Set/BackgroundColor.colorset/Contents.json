@@ -2,8 +2,13 @@
   "colors" : [
     {
       "color" : {
-        "platform" : "ios",
-        "reference" : "groupTableViewBackgroundColor"
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.122",
+          "green" : "0.078",
+          "red" : "0.082"
+        }
       },
       "idiom" : "universal"
     }

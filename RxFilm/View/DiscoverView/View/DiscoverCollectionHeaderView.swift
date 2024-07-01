@@ -12,7 +12,7 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
     
     let titleLabel: UILabel = {
         lazy var label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 32)
