@@ -14,8 +14,6 @@ class ChartViewModel {
     
 //MARK: -Map
     
-    init () {
-    }
     func requestData() {
         
         let url = APIService.configureUrlString(category: .NowPlaying, language: .English, page: 1)
