@@ -35,7 +35,7 @@ class ChartViewController: UIViewController {
         
         viewModel.requestData()
         
-        Layout()
+        setupLayout()
         bindData()
     }
 }
@@ -50,7 +50,7 @@ extension ChartViewController {
             }
             .disposed(by: disposeBag)
     }
-    func Layout() {
+    func setupLayout() {
         
         ChartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
     }

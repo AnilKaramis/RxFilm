@@ -16,10 +16,10 @@ extension FloatingPoint {
     }
 }
 
-extension Float : IdentifiableType {
+extension Float : @retroactive IdentifiableType {
 
 }
 
-extension Double : IdentifiableType {
+extension Double : @retroactive IdentifiableType {
 
 }

@@ -28,7 +28,7 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
         let placeholderColor = UIColor(named: Colors.placeholder) ?? UIColor(named: Colors.light_Background)
         textfield.attributedPlaceholder = NSAttributedString(
             string: "Search...",
-            attributes: [NSAttributedString.Key.foregroundColor : placeholderColor])
+            attributes: [NSAttributedString.Key.foregroundColor : placeholderColor!])
         return textfield
     }()
     
@@ -40,7 +40,6 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension DiscoverCollectionHeaderView {

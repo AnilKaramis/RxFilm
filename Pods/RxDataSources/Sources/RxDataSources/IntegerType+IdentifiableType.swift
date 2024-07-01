@@ -16,15 +16,15 @@ extension BinaryInteger {
     }
 }
 
-extension Int : IdentifiableType {
+extension Int : @retroactive IdentifiableType {
 
 }
 
-extension Int8 : IdentifiableType {
+extension Int8 : @retroactive IdentifiableType {
 
 }
 
-extension Int16 : IdentifiableType {
+extension Int16 : @retroactive IdentifiableType {
 
 }
 

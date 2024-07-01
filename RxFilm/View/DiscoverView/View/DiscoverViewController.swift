@@ -13,7 +13,7 @@ import RxDataSources
 
 class DiscoverViewController:UIViewController {
 
-    let ViewModel = DiscoverViewModel()
+    let viewModel = DiscoverViewModel()
     let disposeBag = DisposeBag()
     
     // CollectionView
@@ -41,16 +41,16 @@ class DiscoverViewController:UIViewController {
         
         CollectionView.delegate = self
   
-        Layout()
+        setupLayout()
         bindData()
         
-        ViewModel.requestData()
+        viewModel.requestData()
     }
 }
 //MARK: -Extension ViewDidLoad
 
 extension DiscoverViewController {
-    private func Layout() {
+    private func setupLayout() {
         self.title = "Home"
         self.view.backgroundColor = UIColor(named: Colors.background)
         super.view.addSubview(CollectionView)
@@ -59,8 +59,8 @@ extension DiscoverViewController {
         }
     }
     private func bindData() {
-        ViewModel.movieFrontObservable
-            .bind(to: CollectionView.rx.items(dataSource: ViewModel.dataSource))
+        viewModel.movieFrontObservable
+            .bind(to: CollectionView.rx.items(dataSource: viewModel.dataSource))
             .disposed(by: disposeBag)
     }
 }
