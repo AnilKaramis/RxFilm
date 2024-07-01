@@ -14,11 +14,14 @@ class ChartTableViewCell: UITableViewCell {
     //MARK: - Properties
     
     lazy var rankLabel : UILabel = {
+        
         var label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .regular)
         label.sizeToFit()
+        label.setContentHuggingPriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
@@ -33,7 +36,7 @@ class ChartTableViewCell: UITableViewCell {
         var label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.numberOfLines = 2
         label.minimumScaleFactor = 10
         return label
@@ -84,12 +87,13 @@ class ChartTableViewCell: UITableViewCell {
             //Add View
             view.addArrangedSubview(starRating)
             view.addArrangedSubview(ratingCountLabel)
+            view.addArrangedSubview(UIView())
             
             // Add Property
             view.axis = .horizontal
             view.distribution = .fill
             view.alignment = .fill
-            view.spacing = 10
+            view.spacing = 5
             return view
         }()
         
@@ -106,7 +110,7 @@ class ChartTableViewCell: UITableViewCell {
             view.axis = .vertical
             view.distribution = .fill
             view.alignment = .fill
-            view.spacing = 10
+            view.spacing = 5
             return view
         }()
         
@@ -134,7 +138,7 @@ class ChartTableViewCell: UITableViewCell {
             $0.left.equalTo(posterImage.snp.right).offset(10)
             $0.top.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-20)
-            $0.right.lessThanOrEqualToSuperview().offset(-15)
+            $0.right.equalToSuperview().offset(-10)
         }
     }
     required init?(coder: NSCoder) {

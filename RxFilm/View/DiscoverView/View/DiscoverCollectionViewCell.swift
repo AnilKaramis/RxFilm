@@ -21,10 +21,10 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     let movieTitle : UILabel = {
         lazy var text = UILabel()
-        text.font = UIFont.systemFont(ofSize: 10)
+        text.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         text.textColor = .white
-        text.numberOfLines = 2
-        text.minimumScaleFactor = 10
+        text.numberOfLines = 3
+        text.minimumScaleFactor = 5
         return text
     }()
     
@@ -32,7 +32,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         let stackView : UIStackView = {
-            var view = UIStackView()
+            let view = UIStackView()
             view.addArrangedSubview(posterImage)
             view.addArrangedSubview(movieTitle)
             
