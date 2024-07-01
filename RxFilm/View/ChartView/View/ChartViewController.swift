@@ -31,6 +31,7 @@ class ChartViewController: UIViewController {
         self.title = "Charts"
         self.view.backgroundColor = UIColor(named: Colors.background)
         self.view.addSubview(ChartTableView)
+        self.ChartTableView.delegate = self
         
         viewModel.requestData()
         
@@ -52,5 +53,13 @@ extension ChartViewController {
     func Layout() {
         
         ChartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
+    }
+}
+
+extension ChartViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+
     }
 }

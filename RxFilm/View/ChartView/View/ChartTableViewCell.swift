@@ -11,6 +11,8 @@ import SnapKit
 
 class ChartTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    
     lazy var rankLabel : UILabel = {
         var label = UILabel()
         label.textColor = .white
@@ -142,14 +144,8 @@ class ChartTableViewCell: UITableViewCell {
 
 extension ChartTableViewCell {
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-        print(self.contentView.bounds.height)
-    }
+    //MARK: - Set Data
     
-    /// to fetch the data afterwards
     func setData(rank: Int,movie: MovieFront) {
         rankLabel.text = "\(rank+1)"
         titleLabel.text = movie.title
@@ -166,5 +162,13 @@ extension ChartTableViewCell {
                 self.posterImage.image = UIImage(data: imageData)
             }
         }
+    }
+}
+
+extension ChartTableViewCell {
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
     }
 }
