@@ -93,16 +93,12 @@ class ChartTableViewCell: UITableViewCell {
         
         let infoStackView : UIStackView = {
             let view = UIStackView()
-            let emptyView = UIView()
-            
-            emptyView.heightAnchor.constraint(equalToConstant: 3).isActive = true
             
             // Add View
             view.addArrangedSubview(titleLabel)
             view.addArrangedSubview(genreLabel)
             view.addArrangedSubview(releaseDateLabel)
             view.addArrangedSubview(starStackView)
-            view.addArrangedSubview(emptyView)
             
             // Add Property
             view.axis = .vertical
@@ -135,7 +131,7 @@ class ChartTableViewCell: UITableViewCell {
         infoStackView.snp.makeConstraints {
             $0.left.equalTo(posterImage.snp.right).offset(10)
             $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().offset(-20)
             $0.right.lessThanOrEqualToSuperview().offset(-15)
         }
     }
@@ -150,6 +146,7 @@ extension ChartTableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+        print(self.contentView.bounds.height)
     }
     
     /// to fetch the data afterwards
