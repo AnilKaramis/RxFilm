@@ -8,13 +8,16 @@
 import Foundation
 import RxSwift
 
+// TODO: - Make this layer to generic
+
 class APIService {
     
     ///Insert api
-    static func configureUrlString(category: MovieListCategory, language: Language,page:Int) -> String {
+    static func configureUrlString(category: MovieListCategory, language: Language, page: Int) -> String {
         return "https://api.themoviedb.org/3/movie/\(category.key)?api_key=\(Network.APIKey)&language=\(language.key)&page=\(page)"
     }
-    static func fetchRequest(url:String,retries:Int,onComlete:@escaping(Result<Data, Error>) ->Void) {
+    
+    static func fetchRequest(url: String,retries:Int,onComlete: @escaping(Result<Data, Error>) ->Void) {
         
         guard let url = URL(string: url) else { return }
         
@@ -24,7 +27,7 @@ class APIService {
                 return
             }
             guard let safeData = data else {
-               let httpResponse = response as? HTTPURLResponse
+                let httpResponse = response as? HTTPURLResponse
                 onComlete(.failure(NSError(domain: "", code: httpResponse?.statusCode ?? 0, userInfo: nil)))
                 return
             }
@@ -89,21 +92,21 @@ enum Language {
 //        var completeURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=9c070ed6542142b55eb044440c144360&language=en-US&page=1"
 //
 //        let retyLimit = 2
-//        
-//        
+//
+//
 //    }
 //    private func performRequest(url:String, retries: Int) {
-//        
+//
 //        guard let UrlTask = URL(string: url) else {return}
-//        
+//
 //        let task = session.dataTask(with: UrlTask) {[self] (data, response, error) in
-//            
+//
 //            if error != nil {
 //                print(error!)
 //                return
 //            }
 //            guard let safeData = data else {return}
-//            
+//
 //            //Decode JSON
 //            do {
 //                let result = try JSONDecoder().decode(MovieList.self, from: safeData)

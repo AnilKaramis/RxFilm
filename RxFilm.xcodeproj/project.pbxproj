@@ -19,6 +19,7 @@
 		A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */; };
 		A54C8CFE2C305101005826FD /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8CFD2C305101005826FD /* APIKey.swift */; };
 		A54C8D0B2C31C200005826FD /* DiscoverCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8D0A2C31C200005826FD /* DiscoverCollectionViewDataSource.swift */; };
+		A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8D0F2C329B26005826FD /* PaddingTextField.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
 		A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120402C1254630045F4C3 /* ChartViewController.swift */; };
 		A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		A53F86D02C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A54C8CFD2C305101005826FD /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		A54C8D0A2C31C200005826FD /* DiscoverCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		A54C8D0F2C329B26005826FD /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A5A120402C1254630045F4C3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,30 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		A54C8D0C2C329AC9005826FD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A54C8D0D2C329AD5005826FD /* CustomComponents */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A54C8D0D2C329AD5005826FD /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A54C8D0E2C329AE2005826FD /* UITextField */,
+			);
+			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		A54C8D0E2C329AE2005826FD /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				A54C8D0F2C329B26005826FD /* PaddingTextField.swift */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
 		A5A120422C14BC090045F4C3 /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +279,7 @@
 		A5D8AAED2BFE40A8002F007F /* RxFilm */ = {
 			isa = PBXGroup;
 			children = (
+				A54C8D0C2C329AC9005826FD /* Common */,
 				A54C8CFC2C2F98F0005826FD /* Base */,
 				A534774F2C2738FC000DD81E /* Domain */,
 				A5A120432C14BC2B0045F4C3 /* View */,
@@ -557,6 +584,7 @@
 				A53477572C273935000DD81E /* MovieFront.swift in Sources */,
 				A54C8CFE2C305101005826FD /* APIKey.swift in Sources */,
 				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
+				A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
 				A53477712C2A1202000DD81E /* DiscoverViewModel.swift in Sources */,
 				A5D8AB212C000EA7002F007F /* Constant.swift in Sources */,

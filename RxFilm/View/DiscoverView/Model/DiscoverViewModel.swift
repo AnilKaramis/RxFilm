@@ -8,8 +8,11 @@
 import Foundation
 import RxSwift
 
+// TODO: - Protocol Oriented Programming
+// TODO: - Dependency Injection
+
 class DiscoverViewModel {
-    
+
     var movieFrontObservable = BehaviorSubject<[DiscoverCollectionViewSection]>(value: [])
     let dataSource = DiscoverCollectionViewDataSource.dataSource()
     
