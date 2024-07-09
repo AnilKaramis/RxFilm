@@ -40,7 +40,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let chartNavigationItem = UINavigationController(rootViewController: chartItem)
         
         let elseItem = UIViewController()
-        elseItem.tabBarItem = UITabBarItem(title: "Credit", image: UIImage(systemName: "ellipsis"), selectedImage: UIImage(systemName: "Credits"))
+        elseItem.tabBarItem = UITabBarItem(title: "Soon", image: UIImage(systemName: "ellipsis"), selectedImage: UIImage(systemName: "Credits"))
         
         self.viewControllers = [discoverItem, chartNavigationItem, elseItem]
     }

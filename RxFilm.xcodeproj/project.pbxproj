@@ -25,6 +25,7 @@
 		A55C1B1A2C3D1714004D6AAA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B192C3D1714004D6AAA /* DetailViewController.swift */; };
 		A55C1B1C2C3D2FD2004D6AAA /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B1B2C3D2FD2004D6AAA /* IconView.swift */; };
 		A55C1B1E2C3D2FDC004D6AAA /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B1D2C3D2FDC004D6AAA /* DescriptionView.swift */; };
+		A590451F2C3D4036007ED191 /* DoubleColumnDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590451E2C3D4036007ED191 /* DoubleColumnDescriptionView.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
 		A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120402C1254630045F4C3 /* ChartViewController.swift */; };
 		A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */; };
@@ -79,6 +80,7 @@
 		A55C1B192C3D1714004D6AAA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A55C1B1B2C3D2FD2004D6AAA /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		A55C1B1D2C3D2FDC004D6AAA /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		A590451E2C3D4036007ED191 /* DoubleColumnDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleColumnDescriptionView.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A5A120402C1254630045F4C3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				A55C1B192C3D1714004D6AAA /* DetailViewController.swift */,
 				A55C1B1B2C3D2FD2004D6AAA /* IconView.swift */,
 				A55C1B1D2C3D2FDC004D6AAA /* DescriptionView.swift */,
+				A590451E2C3D4036007ED191 /* DoubleColumnDescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
 				A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
+				A590451F2C3D4036007ED191 /* DoubleColumnDescriptionView.swift in Sources */,
 				A53477712C2A1202000DD81E /* DiscoverViewModel.swift in Sources */,
 				A5D8AB212C000EA7002F007F /* Constant.swift in Sources */,
 				A534776B2C2A1180000DD81E /* ChartViewModel.swift in Sources */,

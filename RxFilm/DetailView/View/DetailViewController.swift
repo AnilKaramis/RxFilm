@@ -144,21 +144,21 @@ class DetailViewController: UIViewController {
     
     lazy var overviewDivider: UIView = {
         let view = UIView()
-       view.backgroundColor = .gray
+        view.backgroundColor = .gray
         
         return view
     }()
-
+    
     lazy var overviewLabel: UILabel = {
         let label = UILabel()
-       label.text = "OverView"
-       label.textColor = .white
-       label.textAlignment = .left
-       
-       label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-       label.numberOfLines = 0
-       label.minimumScaleFactor = 10
-       
+        label.text = "OverView"
+        label.textColor = .white
+        label.textAlignment = .left
+        
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.numberOfLines = 0
+        label.minimumScaleFactor = 10
+        
         label.setContentHuggingPriority(.required, for: .vertical)
         
         return label
@@ -166,23 +166,23 @@ class DetailViewController: UIViewController {
     
     lazy var overviewContentLabel: UILabel = {
         let label = UILabel()
-       label.text = "This is Overview of movie"   // placeholder
-       label.textColor = .lightGray
-       label.textAlignment = .left
+        label.text = "This is Overview of movie"   // placeholder
+        label.textColor = .lightGray
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         
         return label
     }()
     lazy var overviewStack: UIStackView = {
         let view = UIStackView()
-      view.addArrangedSubview(overviewLabel)
-      view.addArrangedSubview(overviewContentLabel)
-      
-      view.axis = .vertical
-      view.distribution = .fill
-      view.alignment = .fill
-      view.spacing = 3
-      view.isLayoutMarginsRelativeArrangement = true
+        view.addArrangedSubview(overviewLabel)
+        view.addArrangedSubview(overviewContentLabel)
+        
+        view.axis = .vertical
+        view.distribution = .fill
+        view.alignment = .fill
+        view.spacing = 3
+        view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         
         return view
@@ -190,12 +190,24 @@ class DetailViewController: UIViewController {
     //MARK: Date & Genre
     lazy var dateGenreDivider: UIView = {
         let view = UIView()
-       view.backgroundColor = .gray
+        view.backgroundColor = .gray
         view.snp.makeConstraints { $0.height.equalTo(0.5) }
         
         return view
     }()
-
+    
+    //MARK: Date & Genre
+    lazy var dateGenre: DoubleColumnDescriptionView = {
+        let view = DoubleColumnDescriptionView()
+        view.leftDescription.label.text = "Release Date"
+        view.leftDescription.contentLabel.text = "2022.01.03"
+        
+        view.rightDescription.label.text = "Genre"
+        view.rightDescription.contentLabel.text = "Action, Comedy, SF"
+        
+        return view
+    }()
+    
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -230,7 +242,8 @@ class DetailViewController: UIViewController {
         self.contentView.addSubview(backDropImage)
         self.contentView.addSubview(mainInfoStackView)
         self.contentView.addSubview(overviewStack)
-//        dividerArray.forEach{ self.contentView.addSubview($0) }
+        self.contentView.addSubview(dateGenre)
+        
         
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
@@ -258,23 +271,20 @@ class DetailViewController: UIViewController {
         }
         overviewDivider.snp.makeConstraints { $0.height.equalTo(0.5) }
         
-        placeToBottomOfView(placer: overviewStack, target: mainInfoStackView)
-        
-        //divider
-        placeToBottomOfView(placer: overviewDivider, target: mainInfoStackView)
-        placeToBottomOfView(placer: dateGenreDivider, target: overviewStack)
-        
+        appendView(view: overviewStack, target: mainInfoStackView)
+        appendView(view: dateGenre, target: overviewStack)
     }
 }
+
 //MARK: -Divider
 extension DetailViewController {
     
     // Place UIView to bottom anchor of target
-    private func placeToBottomOfView(placer: UIView, target: UIView) {
-        placer.snp.makeConstraints { make in
+    private func appendView(view: UIView, target: UIView) {
+        view.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(target.snp.bottom)
-
+            
         }
     }
 }
