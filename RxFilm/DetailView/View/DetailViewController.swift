@@ -47,6 +47,17 @@ class DetailViewController: UIViewController {
         return label
     }()
     
+    lazy var taglineLabel: UILabel = {
+        let label = UILabel()
+        label.text = "tagline teehee"
+        label.numberOfLines = 0
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        
+        return label
+    }()
+    
     lazy var runtimeIconLabel: IconLabel = {
         let compound = IconLabel()
         compound.label.text = "000"         // placeholder
@@ -57,25 +68,25 @@ class DetailViewController: UIViewController {
     
     lazy var ratingIconLabel: IconLabel = {
         let compound = IconLabel()
-       compound.icon.image = UIImage(systemName: "star.fill")
-       compound.icon.tintColor = .orange
-       compound.label.text = "0.0"
+        compound.icon.image = UIImage(systemName: "star.fill")
+        compound.icon.tintColor = .orange
+        compound.label.text = "0.0"
         
         return compound
     }()
     
-//    lazy var runtimeStack: UIStackView = {
-//        let view = UIStackView()
-//        view.addArrangedSubview(ratingIconLabel)
-//        view.addArrangedSubview(runtimeIconLabel)
-//        
-//        view.axis = .horizontal
-//        view.distribution = .fill
-//        view.alignment = .fill
-//        view.spacing = 3
-//        
-//        return view
-//    }()
+    //    lazy var runtimeStack: UIStackView = {
+    //        let view = UIStackView()
+    //        view.addArrangedSubview(ratingIconLabel)
+    //        view.addArrangedSubview(runtimeIconLabel)
+    //
+    //        view.axis = .horizontal
+    //        view.distribution = .fill
+    //        view.alignment = .fill
+    //        view.spacing = 3
+    //
+    //        return view
+    //    }()
     
     lazy var ratingIcon: UIImageView = {
         let image = UIImageView()
@@ -109,12 +120,25 @@ class DetailViewController: UIViewController {
         return view
     }()
     
+    lazy var iconLabel: UIStackView = {
+        let label = UIStackView()
+       label.addArrangedSubview(runtimeIconLabel)
+       label.addArrangedSubview(ratingIconLabel)
+        
+       label.axis = .horizontal
+       label.distribution = .fill
+       label.alignment = .leading
+       label.spacing = 5
+        
+        return label
+    }()
+
     lazy var mainInfoLabelStack: UIStackView = {
         let view = UIStackView()
         view.addArrangedSubview(titleLabel)
-        view.addArrangedSubview(runtimeIconLabel)
+        view.addArrangedSubview(taglineLabel)
         view.addArrangedSubview(UIView())
-        view.addArrangedSubview(ratingStack)
+        view.addArrangedSubview(iconLabel)
         
         view.axis = .vertical
         view.distribution = .fill
@@ -151,11 +175,11 @@ class DetailViewController: UIViewController {
     //MARK: Date & Genre
     lazy var dateGenre: DoubleColumnDescriptionView = {
         let compound = DoubleColumnDescriptionView()
-     compound.leftDescription.label.text = "Release Date"
-     compound.leftDescription.contentLabel.text = "2022.01.03"
-     
-     compound.rightDescription.label.text = "Genre"
-     compound.rightDescription.contentLabel.text = "Action, Comedy, SF"
+        compound.leftDescription.label.text = "Release Date"
+        compound.leftDescription.contentLabel.text = "2022.01.03"
+        
+        compound.rightDescription.label.text = "Genre"
+        compound.rightDescription.contentLabel.text = "Action, Comedy, SF"
         
         return compound
     }()
