@@ -11,6 +11,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    
     //MARK: BackDrop
     lazy var backDropImage: UIImageView = {
         let image = UIImageView()
@@ -157,10 +160,23 @@ class DetailViewController: UIViewController {
         
         let dividerArray = Array(repeating: DetailViewController.dividerView, count: 4)
         
-        // Add to Subview
-        self.view.addSubview(backDropImage)
-        self.view.addSubview(mainInfoStackView)
-        dividerArray.forEach{ self.view.addSubview($0) }
+        //Setup ScrollView
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+        
+        
+        // Add to Subview into contentView
+        self.contentView.addSubview(backDropImage)
+        self.contentView.addSubview(mainInfoStackView)
+        dividerArray.forEach{ self.contentView.addSubview($0) }
         
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
