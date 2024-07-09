@@ -40,7 +40,6 @@ class DetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
     //MARK: BackDrop
     lazy var backDropImage: UIImageView = {
         let image = UIImageView()
@@ -58,6 +57,7 @@ class DetailViewController: UIViewController {
         image.backgroundColor = .systemOrange
         
         image.setContentHuggingPriority(.required, for: .horizontal)
+        image.sizeToFit()
         
         return image
     }()
@@ -98,19 +98,6 @@ class DetailViewController: UIViewController {
         
         return compound
     }()
-    
-    //    lazy var runtimeStack: UIStackView = {
-    //        let view = UIStackView()
-    //        view.addArrangedSubview(ratingIconLabel)
-    //        view.addArrangedSubview(runtimeIconLabel)
-    //
-    //        view.axis = .horizontal
-    //        view.distribution = .fill
-    //        view.alignment = .fill
-    //        view.spacing = 3
-    //
-    //        return view
-    //    }()
     
     lazy var ratingIcon: UIImageView = {
         let image = UIImageView()
@@ -178,11 +165,14 @@ class DetailViewController: UIViewController {
         
         view.axis = .horizontal
         view.distribution = .fill
-        view.alignment = .leading
+        view.alignment = .fill
         view.spacing = 10
         view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets.detailViewComponentInset
         
+        posterImage.setContentHuggingPriority(.required, for: .horizontal)
+        mainInfoLabelStack.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
         return view
     }()
     //MARK: -Overview
@@ -212,6 +202,7 @@ class DetailViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(named: Colors.background)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.preferredContentSize.height = 0.0
         
         bindData()
         applyConstraint()
@@ -225,15 +216,15 @@ class DetailViewController: UIViewController {
                 guard let movieDetail = data else { return }
                 self.applyMovieDetailData(data: movieDetail)
             })
-        
     }
     
-    //MARK: -Constraints
     private func applyConstraint() {
         
         //Setup ScrollView
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.bounces = false
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -243,7 +234,6 @@ class DetailViewController: UIViewController {
             make.width.equalToSuperview()
         }
         
-        
         // Add to Subview into contentView
         self.contentView.addSubview(backButton)
         self.contentView.addSubview(backDropImage)
@@ -251,14 +241,11 @@ class DetailViewController: UIViewController {
         self.contentView.addSubview(overView)
         self.contentView.addSubview(dateGenre)
         
-        
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.top.left.right.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(backDropImage.snp.width).multipliedBy(0.5)
-            
+            make.height.lessThanOrEqualTo(backDropImage.snp.width).multipliedBy(0.7)
         }
         
         backButton.snp.makeConstraints { make in
@@ -276,6 +263,8 @@ class DetailViewController: UIViewController {
         
         appendView(view: overView, target: mainInfoStackView)
         appendView(view: dateGenre, target: overView)
+        
+        dateGenre.snp.makeConstraints{ $0.bottom.equalToSuperview() }
     }
     
     private func applyMovieDetailData(data: MovieDetail) {
