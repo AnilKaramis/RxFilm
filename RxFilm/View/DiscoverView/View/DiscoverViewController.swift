@@ -39,10 +39,11 @@ class DiscoverViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CollectionView.delegate = self
         self.dismissKeyboard()
+        CollectionView.delegate = self
         
-        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         setupLayout()
         bindData()
         
@@ -79,7 +80,12 @@ extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDeleg
 extension DiscoverViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCollectionViewCell else { return }
-        print(cell.contentId)
+        guard let id = cell.contentId else { return }
+        
+        let vc = DetailViewController(id: id)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
 }
 

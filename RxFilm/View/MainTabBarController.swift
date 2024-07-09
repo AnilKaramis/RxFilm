@@ -33,6 +33,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let discoverItem = DiscoverViewController()
         discoverItem.tabBarItem = UITabBarItem(title: "Discover", image: UIImage(systemName: "film"), selectedImage: UIImage(systemName: "film.fill"))
         
+        let discoverNavigationItem = UINavigationController(rootViewController: discoverItem)
+        
         let chartItem = ChartViewController()
         chartItem.tabBarItem = UITabBarItem(title: "Charts", image: UIImage(systemName: "list.number"), selectedImage: UIImage(systemName: "list.number"))
         
@@ -41,7 +43,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let elseItem = UIViewController()
         elseItem.tabBarItem = UITabBarItem(title: "Soon", image: UIImage(systemName: "ellipsis"), selectedImage: UIImage(systemName: "Credits"))
         
-        self.viewControllers = [discoverItem, chartNavigationItem, elseItem]
+        self.viewControllers = [discoverNavigationItem, chartNavigationItem, elseItem]
+
     }
     
     //Delegate methods

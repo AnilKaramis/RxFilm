@@ -27,6 +27,20 @@ class DetailViewController: UIViewController {
     let scrollView = UIScrollView()
     let contentView = UIView()
     
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        button.imageView?.image = UIImage(systemName: "chevron.backward.circle")
+        button.imageView?.tintColor = .white
+        
+        return button
+    }()
+    
+    @objc private func backButtonAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
     //MARK: BackDrop
     lazy var backDropImage: UIImageView = {
         let image = UIImageView()
@@ -44,14 +58,12 @@ class DetailViewController: UIViewController {
         image.backgroundColor = .systemOrange
         
         image.setContentHuggingPriority(.required, for: .horizontal)
-        image.setContentHuggingPriority(.required, for: .vertical)
-
+        
         return image
     }()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Title"
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
@@ -64,7 +76,6 @@ class DetailViewController: UIViewController {
     
     lazy var taglineLabel: UILabel = {
         let label = UILabel()
-        label.text = "tagline teehee"
         label.numberOfLines = 0
         label.textColor = .lightGray
         label.textAlignment = .left
@@ -75,7 +86,6 @@ class DetailViewController: UIViewController {
     
     lazy var runtimeIconLabel: IconLabel = {
         let compound = IconLabel()
-        compound.label.text = "000"         // placeholder
         compound.icon.image = UIImage(systemName: "clock")
         
         return compound
@@ -85,7 +95,6 @@ class DetailViewController: UIViewController {
         let compound = IconLabel()
         compound.icon.image = UIImage(systemName: "star.fill")
         compound.icon.tintColor = .orange
-        compound.label.text = "0.0"
         
         return compound
     }()
@@ -114,7 +123,6 @@ class DetailViewController: UIViewController {
     
     lazy var ratingLabel: UILabel = {
         let label = UILabel()
-        label.text = "0.0"         // placeholder
         label.textColor = .lightGray
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -137,17 +145,17 @@ class DetailViewController: UIViewController {
     
     lazy var iconLabel: UIStackView = {
         let label = UIStackView()
-       label.addArrangedSubview(runtimeIconLabel)
-       label.addArrangedSubview(ratingIconLabel)
+        label.addArrangedSubview(runtimeIconLabel)
+        label.addArrangedSubview(ratingIconLabel)
         
-       label.axis = .horizontal
-       label.distribution = .fill
-       label.alignment = .leading
-       label.spacing = 5
+        label.axis = .horizontal
+        label.distribution = .fill
+        label.alignment = .leading
+        label.spacing = 5
         
         return label
     }()
-
+    
     lazy var mainInfoLabelStack: UIStackView = {
         let view = UIStackView()
         view.addArrangedSubview(titleLabel)
@@ -174,7 +182,7 @@ class DetailViewController: UIViewController {
         view.spacing = 10
         view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets.detailViewComponentInset
-
+        
         return view
     }()
     //MARK: -Overview
@@ -203,6 +211,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(named: Colors.background)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         bindData()
         applyConstraint()
@@ -216,7 +225,7 @@ class DetailViewController: UIViewController {
                 guard let movieDetail = data else { return }
                 self.applyMovieDetailData(data: movieDetail)
             })
-
+        
     }
     
     //MARK: -Constraints
@@ -236,6 +245,7 @@ class DetailViewController: UIViewController {
         
         
         // Add to Subview into contentView
+        self.contentView.addSubview(backButton)
         self.contentView.addSubview(backDropImage)
         self.contentView.addSubview(mainInfoStackView)
         self.contentView.addSubview(overView)
@@ -244,11 +254,19 @@ class DetailViewController: UIViewController {
         
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.width.equalToSuperview()
             make.height.equalTo(backDropImage.snp.width).multipliedBy(0.5)
             
         }
+        
+        backButton.snp.makeConstraints { make in
+            make.top.left.equalToSuperview().offset(20)
+            make.height.equalTo(backDropImage.snp.height).multipliedBy(0.15)
+            make.width.equalTo(backButton.snp.height)
+        }
+        
         mainInfoStackView.snp.makeConstraints { make in
             make.top.equalTo(backDropImage.snp.bottom)
             make.left.right.equalToSuperview()
@@ -259,10 +277,6 @@ class DetailViewController: UIViewController {
         appendView(view: overView, target: mainInfoStackView)
         appendView(view: dateGenre, target: overView)
     }
-}
-
-//MARK: -Divider
-extension DetailViewController {
     
     private func applyMovieDetailData(data: MovieDetail) {
         
@@ -296,8 +310,11 @@ extension DetailViewController {
         let genres = data.genres.map { $0.name }.joined(separator: ",")
         self.dateGenre.rightDescription.contentLabel.text = genres
     }
+}
+
+// Constrait Function
+extension DetailViewController {
     
-    // Place UIView to bottom anchor of target
     private func appendView(view: UIView, target: UIView) {
         view.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
