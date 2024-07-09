@@ -21,6 +21,9 @@ class APIService {
         return "https://api.themoviedb.org/3/movie/\(id)?api_key=\(Network.APIKey)&language=\(language)"
         
     }
+    static func configureUrlString(imagePath: String) -> String{
+        return "https://image.tmdb.org/t/p/original/\(imagePath)"
+    }
     
     static func fetchRequest(url: String,retries:Int,onComlete: @escaping(Result<Data, Error>) ->Void) {
         
@@ -41,6 +44,13 @@ class APIService {
         task.resume()
     }
 }
+
+extension String {
+    var fullImagePath: String {
+        return "https://image.tmdb.org/t/p/original/\(self)"
+    }
+}
+
 //MARK: - Fetch with Rx
 
 extension APIService {

@@ -20,6 +20,8 @@ struct MovieFront {
 
 extension MovieFront{
     static func convertFromMovieInfo(movie: MovieListResult) -> MovieFront {
-        return MovieFront(id: movie.id, title: movie.title, posterPath: "https://image.tmdb.org/t/p/original/\(movie.posterPath)", genre: genreCode[movie.genreIDS[0]] ?? "", releaseDate: movie.releaseDate, ratingScore: movie.voteAverage, ratingCount: movie.voteCount)
+//        return MovieFront(id: movie.id, title: movie.title, posterPath: "https://image.tmdb.org/t/p/original/\(movie.posterPath)", genre: genreCode[movie.genreIDS[0]] ?? "", releaseDate: movie.releaseDate, ratingScore: movie.voteAverage, ratingCount: movie.voteCount)
+        return MovieFront(id: movie.id, title: movie.title, posterPath: movie.posterPath, genre: genreCode[movie.genreIDS[0]] ?? "", releaseDate: movie.releaseDate, ratingScore: movie.voteAverage, ratingCount: movie.voteCount)
+
     }
 }
