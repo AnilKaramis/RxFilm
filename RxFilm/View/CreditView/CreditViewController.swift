@@ -15,8 +15,8 @@ class CreditViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(named: Colors.background)
         
-        let createPageLabel : UILabel = {
-            var label = UILabel()
+        var createPageLabel : UILabel = {
+            let label = UILabel()
             label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
             label.textColor = .white
             label.text = "This is Credit Page"

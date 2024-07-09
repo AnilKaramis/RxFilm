@@ -21,10 +21,10 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     let movieTitle : UILabel = {
         lazy var text = UILabel()
-        text.font = UIFont.systemFont(ofSize: 10)
+        text.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         text.textColor = .white
-        text.numberOfLines = 2
-        text.minimumScaleFactor = 10
+        text.numberOfLines = 3
+        text.minimumScaleFactor = 5
         return text
     }()
     
@@ -32,7 +32,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         let stackView : UIStackView = {
-            var view = UIStackView()
+            let view = UIStackView()
             view.addArrangedSubview(posterImage)
             view.addArrangedSubview(movieTitle)
             
@@ -71,7 +71,7 @@ extension DiscoverCollectionViewCell {
         self.movieTitle.text = movie.title
         
         DispatchQueue.global().async {
-            guard let imageURL = URL(string: "https://image.tmdb.org/t/p/original/\(movie.posterPath)") else {
+            guard let imageURL = URL(string: movie.posterPath) else {
                 return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             

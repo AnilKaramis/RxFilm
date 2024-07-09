@@ -11,12 +11,17 @@ import SnapKit
 
 class ChartTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    
     lazy var rankLabel : UILabel = {
+        
         var label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .regular)
         label.sizeToFit()
+        label.setContentHuggingPriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
@@ -31,7 +36,7 @@ class ChartTableViewCell: UITableViewCell {
         var label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.numberOfLines = 2
         label.minimumScaleFactor = 10
         return label
@@ -82,33 +87,30 @@ class ChartTableViewCell: UITableViewCell {
             //Add View
             view.addArrangedSubview(starRating)
             view.addArrangedSubview(ratingCountLabel)
+            view.addArrangedSubview(UIView())
             
             // Add Property
             view.axis = .horizontal
             view.distribution = .fill
             view.alignment = .fill
-            view.spacing = 10
+            view.spacing = 5
             return view
         }()
         
         let infoStackView : UIStackView = {
             let view = UIStackView()
-            let emptyView = UIView()
-            
-            emptyView.heightAnchor.constraint(equalToConstant: 3).isActive = true
             
             // Add View
             view.addArrangedSubview(titleLabel)
             view.addArrangedSubview(genreLabel)
             view.addArrangedSubview(releaseDateLabel)
             view.addArrangedSubview(starStackView)
-            view.addArrangedSubview(emptyView)
             
             // Add Property
             view.axis = .vertical
             view.distribution = .fill
             view.alignment = .fill
-            view.spacing = 10
+            view.spacing = 5
             return view
         }()
         
@@ -135,8 +137,8 @@ class ChartTableViewCell: UITableViewCell {
         infoStackView.snp.makeConstraints {
             $0.left.equalTo(posterImage.snp.right).offset(10)
             $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
-            $0.right.lessThanOrEqualToSuperview().offset(-15)
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.right.equalToSuperview().offset(-10)
         }
     }
     required init?(coder: NSCoder) {
@@ -146,13 +148,8 @@ class ChartTableViewCell: UITableViewCell {
 
 extension ChartTableViewCell {
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
+    //MARK: - Set Data
     
-    /// to fetch the data afterwards
     func setData(rank: Int,movie: MovieFront) {
         rankLabel.text = "\(rank+1)"
         titleLabel.text = movie.title
@@ -162,12 +159,20 @@ extension ChartTableViewCell {
         ratingCountLabel.text = "\(movie.ratingCount)"
         
         DispatchQueue.global().async {
-            guard let imageURL = URL(string: "https://image.tmdb.org/t/p/original/\(movie.posterPath)") else { return }
+            guard let imageURL = URL(string: movie.posterPath) else {return}
             guard let imageData = try? Data(contentsOf: imageURL) else {return}
             
             DispatchQueue.main.sync {
                 self.posterImage.image = UIImage(data: imageData)
             }
         }
+    }
+}
+
+extension ChartTableViewCell {
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
     }
 }

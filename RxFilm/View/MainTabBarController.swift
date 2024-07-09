@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    let AppearanceTabBar: UITabBarAppearance = {
+    let appearanceTabBar: UITabBarAppearance = {
         var apperance = UITabBarAppearance()
         apperance.configureWithOpaqueBackground()
         apperance.backgroundColor = UIColor(named: Colors.light_Background)
@@ -20,8 +20,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.standardAppearance = AppearanceTabBar
-        self.tabBar.scrollEdgeAppearance = AppearanceTabBar
+        self.tabBar.standardAppearance = appearanceTabBar
+        self.tabBar.scrollEdgeAppearance = appearanceTabBar
         self.tabBar.tintColor = .white
         
         self.delegate = self
@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         chartItem.tabBarItem = UITabBarItem(title: "Charts", image: UIImage(systemName: "list.number"), selectedImage: UIImage(systemName: "list.number"))
         
         let elseItem = UIViewController()
-        elseItem.tabBarItem = UITabBarItem(title: "Send", image: UIImage(systemName: "square.and.arrow.up"), selectedImage: UIImage(systemName: "square.and.arrow.up.fill"))
+        elseItem.tabBarItem = UITabBarItem(title: "Credit", image: UIImage(systemName: "ellipsis"), selectedImage: UIImage(systemName: "Credits"))
         
         
         self.viewControllers = [discoverItem, chartItem, elseItem]
