@@ -155,49 +155,59 @@ class DetailViewController: UIViewController {
     //MARK: Constraints
     private func applyConstraint() {
         
-        var dividerView: UIView = {
-            let view = UIView()
-            view.backgroundColor = .gray
-            view.snp.makeConstraints { make in
-                make.height.equalTo(0.5)
-            }
-            return view
-        }()
-        
-        let dividerArray = Array(repeating: dividerView, count: 4)
+        let dividerArray = Array(repeating: DetailViewController.dividerView, count: 4)
         
         // Add to Subview
         self.view.addSubview(backDropImage)
         self.view.addSubview(mainInfoStackView)
         dividerArray.forEach{ self.view.addSubview($0) }
-
         
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(backDropImage.snp.width).multipliedBy(0.5)
+            
         }
-        
         mainInfoStackView.snp.makeConstraints { make in
             make.top.equalTo(backDropImage.snp.bottom)
             make.left.right.equalToSuperview()
+            
         }
         ratingIcon.snp.makeConstraints { make in
             make.height.equalTo(ratingLabel.snp.height)
             make.width.equalTo(ratingIcon.snp.height)
+            
         }
         runtimeStack.snp.makeConstraints { make in
             make.height.equalTo(runtimeLabel.snp.height)
             make.width.equalTo(runtimeIcon.snp.height)
+            
         }
-        dividerArray[0].snp.makeConstraints { make in
+        placeToBottomOfView(placer: dividerArray[0], target: mainInfoStackView)
+        
+    }
+}
+//MARK: -Divider
+extension DetailViewController {
+    
+    static let dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        view.snp.makeConstraints { make in
+            make.height.equalTo(0.5)
+        }
+        return view
+    }()
+    
+    // Place UIView to bottom anchor of target
+    private func placeToBottomOfView(placer: UIView, target: UIView) {
+        placer.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.centerY.equalTo(mainInfoStackView.snp.bottom)
+            make.centerY.equalTo(target.snp.bottom)
         }
     }
 }
-
 
 #if DEBUG
 import SwiftUI
