@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
         label.text = "Title"
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         label.numberOfLines = 0
         label.minimumScaleFactor = 10
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -114,8 +114,8 @@ class DetailViewController: UIViewController {
     lazy var mainInfoLabelStack: UIStackView = {
         let view = UIStackView()
         view.addArrangedSubview(titleLabel)
-        view.addArrangedSubview(UIView())
         view.addArrangedSubview(runtimeStack)
+        view.addArrangedSubview(UIView())
         view.addArrangedSubview(ratingStack)
         
         view.axis = .vertical
@@ -136,7 +136,46 @@ class DetailViewController: UIViewController {
         view.alignment = .fill
         view.spacing = 10
         view.isLayoutMarginsRelativeArrangement = true
-        view.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        view.layoutMargins = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 20)
+        
+        return view
+    }()
+    //MARK: -Overview
+    lazy var overviewLabel: UILabel = {
+        let label = UILabel()
+       label.text = "OverView"
+       label.textColor = .white
+       label.textAlignment = .left
+       
+       label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+       label.numberOfLines = 0
+       label.minimumScaleFactor = 10
+       
+        label.setContentHuggingPriority(.required, for: .vertical)
+        
+        return label
+    }()
+    
+    lazy var overviewContentLabel: UILabel = {
+        let label = UILabel()
+       label.text = "This is Overview of movie"   // placeholder
+       label.textColor = .lightGray
+       label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        
+        return label
+    }()
+    lazy var overviewStack: UIStackView = {
+        let view = UIStackView()
+      view.addArrangedSubview(overviewLabel)
+      view.addArrangedSubview(overviewContentLabel)
+      
+      view.axis = .vertical
+      view.distribution = .fill
+      view.alignment = .fill
+      view.spacing = 3
+      view.isLayoutMarginsRelativeArrangement = true
+        view.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         
         return view
     }()
@@ -176,6 +215,7 @@ class DetailViewController: UIViewController {
         // Add to Subview into contentView
         self.contentView.addSubview(backDropImage)
         self.contentView.addSubview(mainInfoStackView)
+        self.contentView.addSubview(overviewStack)
         dividerArray.forEach{ self.contentView.addSubview($0) }
         
         // Set Constraint
@@ -188,19 +228,23 @@ class DetailViewController: UIViewController {
         mainInfoStackView.snp.makeConstraints { make in
             make.top.equalTo(backDropImage.snp.bottom)
             make.left.right.equalToSuperview()
+            make.height.equalTo(self.view.snp.width).multipliedBy(0.45)
             
         }
+        
         ratingIcon.snp.makeConstraints { make in
-            make.height.equalTo(ratingLabel.snp.height)
+            make.height.equalTo(15)
             make.width.equalTo(ratingIcon.snp.height)
             
         }
         runtimeStack.snp.makeConstraints { make in
-            make.height.equalTo(runtimeLabel.snp.height)
+            make.height.equalTo(15)
             make.width.equalTo(runtimeIcon.snp.height)
             
         }
         placeToBottomOfView(placer: dividerArray[0], target: mainInfoStackView)
+        
+        placeToBottomOfView(placer: overviewStack, target: mainInfoStackView)
         
     }
 }
@@ -220,7 +264,8 @@ extension DetailViewController {
     private func placeToBottomOfView(placer: UIView, target: UIView) {
         placer.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.centerY.equalTo(target.snp.bottom)
+            make.top.equalTo(target.snp.bottom)
+
         }
     }
 }
