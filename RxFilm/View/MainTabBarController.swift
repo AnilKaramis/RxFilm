@@ -24,7 +24,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.scrollEdgeAppearance = appearanceTabBar
         self.tabBar.standardAppearance = appearanceTabBar
 
-        
         self.delegate = self
     }
     

@@ -47,37 +47,35 @@ class DetailViewController: UIViewController {
         return label
     }()
     
-    lazy var runtimeIcon: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(systemName: "clock")
-        image.tintColor = .lightGray
-        image.setContentHuggingPriority(.required, for: .vertical)
+    lazy var runtimeIconLabel: IconLabel = {
+        let compound = IconLabel()
+        compound.label.text = "000"         // placeholder
+        compound.icon.image = UIImage(systemName: "clock")
         
-        return image
+        return compound
     }()
     
-    lazy var runtimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "000"         // placeholder
-        label.textColor = .lightGray
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+    lazy var ratingIconLabel: IconLabel = {
+        let compound = IconLabel()
+       compound.icon.image = UIImage(systemName: "star.fill")
+       compound.icon.tintColor = .orange
+       compound.label.text = "0.0"
         
-        return label
+        return compound
     }()
     
-    lazy var runtimeStack: UIStackView = {
-        let view = UIStackView()
-        view.addArrangedSubview(runtimeIcon)
-        view.addArrangedSubview(runtimeLabel)
-        
-        view.axis = .horizontal
-        view.distribution = .fill
-        view.alignment = .fill
-        view.spacing = 3
-        
-        return view
-    }()
+//    lazy var runtimeStack: UIStackView = {
+//        let view = UIStackView()
+//        view.addArrangedSubview(ratingIconLabel)
+//        view.addArrangedSubview(runtimeIconLabel)
+//        
+//        view.axis = .horizontal
+//        view.distribution = .fill
+//        view.alignment = .fill
+//        view.spacing = 3
+//        
+//        return view
+//    }()
     
     lazy var ratingIcon: UIImageView = {
         let image = UIImageView()
@@ -114,7 +112,7 @@ class DetailViewController: UIViewController {
     lazy var mainInfoLabelStack: UIStackView = {
         let view = UIStackView()
         view.addArrangedSubview(titleLabel)
-        view.addArrangedSubview(runtimeStack)
+        view.addArrangedSubview(runtimeIconLabel)
         view.addArrangedSubview(UIView())
         view.addArrangedSubview(ratingStack)
         
@@ -142,70 +140,24 @@ class DetailViewController: UIViewController {
     }()
     //MARK: -Overview
     
-    lazy var overviewDivider: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray
+    lazy var overView: DescriptionView = {
+        let compound = DescriptionView()
+        compound.label.text = "Overview"
+        compound.contentLabel.text = "The only difference between a problem and a solution is that people understand the solution"
         
-        return view
-    }()
-    
-    lazy var overviewLabel: UILabel = {
-        let label = UILabel()
-        label.text = "OverView"
-        label.textColor = .white
-        label.textAlignment = .left
-        
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        label.numberOfLines = 0
-        label.minimumScaleFactor = 10
-        
-        label.setContentHuggingPriority(.required, for: .vertical)
-        
-        return label
-    }()
-    
-    lazy var overviewContentLabel: UILabel = {
-        let label = UILabel()
-        label.text = "This is Overview of movie"   // placeholder
-        label.textColor = .lightGray
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        
-        return label
-    }()
-    lazy var overviewStack: UIStackView = {
-        let view = UIStackView()
-        view.addArrangedSubview(overviewLabel)
-        view.addArrangedSubview(overviewContentLabel)
-        
-        view.axis = .vertical
-        view.distribution = .fill
-        view.alignment = .fill
-        view.spacing = 3
-        view.isLayoutMarginsRelativeArrangement = true
-        view.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        
-        return view
-    }()
-    //MARK: Date & Genre
-    lazy var dateGenreDivider: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray
-        view.snp.makeConstraints { $0.height.equalTo(0.5) }
-        
-        return view
+        return compound
     }()
     
     //MARK: Date & Genre
     lazy var dateGenre: DoubleColumnDescriptionView = {
-        let view = DoubleColumnDescriptionView()
-        view.leftDescription.label.text = "Release Date"
-        view.leftDescription.contentLabel.text = "2022.01.03"
+        let compound = DoubleColumnDescriptionView()
+     compound.leftDescription.label.text = "Release Date"
+     compound.leftDescription.contentLabel.text = "2022.01.03"
+     
+     compound.rightDescription.label.text = "Genre"
+     compound.rightDescription.contentLabel.text = "Action, Comedy, SF"
         
-        view.rightDescription.label.text = "Genre"
-        view.rightDescription.contentLabel.text = "Action, Comedy, SF"
-        
-        return view
+        return compound
     }()
     
     //MARK: ViewDidLoad
@@ -241,7 +193,7 @@ class DetailViewController: UIViewController {
         // Add to Subview into contentView
         self.contentView.addSubview(backDropImage)
         self.contentView.addSubview(mainInfoStackView)
-        self.contentView.addSubview(overviewStack)
+        self.contentView.addSubview(overView)
         self.contentView.addSubview(dateGenre)
         
         
@@ -259,20 +211,8 @@ class DetailViewController: UIViewController {
             
         }
         
-        ratingIcon.snp.makeConstraints { make in
-            make.height.equalTo(15)
-            make.width.equalTo(ratingIcon.snp.height)
-            
-        }
-        runtimeStack.snp.makeConstraints { make in
-            make.height.equalTo(15)
-            make.width.equalTo(runtimeIcon.snp.height)
-            
-        }
-        overviewDivider.snp.makeConstraints { $0.height.equalTo(0.5) }
-        
-        appendView(view: overviewStack, target: mainInfoStackView)
-        appendView(view: dateGenre, target: overviewStack)
+        appendView(view: overView, target: mainInfoStackView)
+        appendView(view: dateGenre, target: overView)
     }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class IconView: UIView {
+class IconLabel: UIView {
     
     lazy var icon: UIImageView = {
         let image = UIImageView()
