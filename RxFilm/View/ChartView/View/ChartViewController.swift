@@ -31,7 +31,7 @@ class ChartViewController: UIViewController {
         navigation.backgroundColor = UIColor(named: Colors.background)
         return navigation
     }()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +45,8 @@ class ChartViewController: UIViewController {
         configureNavigation()
         applyConstraint()
         bindData()
-
-        viewModel.requestData()
+        
+        viewModel.requestData(category: .Popular)
     }
 }
 //MARK: Data Binding
@@ -59,7 +59,15 @@ extension ChartViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.title = "Popular"
         
-        let categoryButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet.circle"), style: .plain, target: self, action: #selector(addTapped))
+        let categoryMenuItem = [
+                UIAction(title: "Popular", image: UIImage(systemName: "flame.fill"), handler: { _ in }),
+                UIAction(title: "Top Rated", image: UIImage(systemName: "star.fill"), handler: { _ in }),
+                UIAction(title: "Now Playing", image: UIImage(systemName: "theatermasks.fill"), handler: { _ in })
+        ]
+        let categoryMenu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: categoryMenuItem)
+        
+        //NavigationBarItem
+        let categoryButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet.circle"),primaryAction: nil, menu: categoryMenu)
         categoryButton.tintColor = .white
         navigationItem.rightBarButtonItem = categoryButton
     }
@@ -67,8 +75,8 @@ extension ChartViewController {
     private func applyConstraint() {
         chartTableView.snp.makeConstraints { $0.edges.equalTo(self.view.safeAreaLayoutGuide) }
     }
-
-
+    
+    
     func bindData() {
         
         viewModel.movieFrontObservable
@@ -78,16 +86,12 @@ extension ChartViewController {
             }
             .disposed(by: disposeBag)
     }
-    
-    @objc func addTapped() {
-        print(#function)
-    }
 }
 
 extension ChartViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
-
+        
     }
 }

@@ -24,6 +24,8 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
         lazy var textfield = PaddingTextField()
         textfield.layer.cornerRadius = 20
         textfield.backgroundColor = UIColor(named: Colors.light_Background)
+        textfield.textColor = .white
+
         //        textfield.placeholder = "Search..."
         let placeholderColor = UIColor(named: Colors.placeholder) ?? UIColor(named: Colors.light_Background)
         textfield.attributedPlaceholder = NSAttributedString(
