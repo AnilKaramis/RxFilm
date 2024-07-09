@@ -20,6 +20,7 @@
 		A54C8CFE2C305101005826FD /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8CFD2C305101005826FD /* APIKey.swift */; };
 		A54C8D0B2C31C200005826FD /* DiscoverCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8D0A2C31C200005826FD /* DiscoverCollectionViewDataSource.swift */; };
 		A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8D0F2C329B26005826FD /* PaddingTextField.swift */; };
+		A55C1B142C3CD7C3004D6AAA /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B132C3CD7C3004D6AAA /* MovieDetail.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
 		A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120402C1254630045F4C3 /* ChartViewController.swift */; };
 		A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */; };
@@ -69,6 +70,7 @@
 		A54C8CFD2C305101005826FD /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		A54C8D0A2C31C200005826FD /* DiscoverCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A54C8D0F2C329B26005826FD /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		A55C1B132C3CD7C3004D6AAA /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A5A120402C1254630045F4C3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				A53477542C27392A000DD81E /* MovieList.swift */,
 				A53477562C273935000DD81E /* MovieFront.swift */,
+				A55C1B132C3CD7C3004D6AAA /* MovieDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */,
 				A53477572C273935000DD81E /* MovieFront.swift in Sources */,
 				A54C8CFE2C305101005826FD /* APIKey.swift in Sources */,
+				A55C1B142C3CD7C3004D6AAA /* MovieDetail.swift in Sources */,
 				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
 				A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
