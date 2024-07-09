@@ -12,7 +12,7 @@ import RxCocoa
 import RxDataSources
 
 class DiscoverViewController:UIViewController {
-
+    
     let viewModel = DiscoverViewModel()
     let disposeBag = DisposeBag()
     
@@ -40,7 +40,9 @@ class DiscoverViewController:UIViewController {
         super.viewDidLoad()
         
         CollectionView.delegate = self
-  
+        self.dismissKeyboard()
+        
+        
         setupLayout()
         bindData()
         
@@ -64,6 +66,7 @@ extension DiscoverViewController {
             .disposed(by: disposeBag)
     }
 }
+
 //MARK: -CollectionView Frame
 
 extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -73,3 +76,17 @@ extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDeleg
         return CGSize(width: itemWidth, height: itemWidth * 1.75)
     }
 }
+
+//MARK: -Dismiss Keyaord
+extension DiscoverViewController {
+    func dismissKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action:    #selector(DiscoverViewController.dismissKeyboardTouchOutside))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissKeyboardTouchOutside() {
+        view.endEditing(true)
+    }
+}
+
