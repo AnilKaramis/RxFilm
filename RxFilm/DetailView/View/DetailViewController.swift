@@ -46,8 +46,8 @@ class DetailViewController: UIViewController {
     
     lazy var runtimeIcon: UIImageView = {
         let image = UIImageView()
-       image.image = UIImage(systemName: "clock")
-       image.tintColor = .lightGray
+        image.image = UIImage(systemName: "clock")
+        image.tintColor = .lightGray
         image.setContentHuggingPriority(.required, for: .vertical)
         
         return image
@@ -55,9 +55,9 @@ class DetailViewController: UIViewController {
     
     lazy var runtimeLabel: UILabel = {
         let label = UILabel()
-       label.text = "000"         // placeholder
-       label.textColor = .lightGray
-       label.textAlignment = .left
+        label.text = "000"         // placeholder
+        label.textColor = .lightGray
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         
         return label
@@ -65,31 +65,31 @@ class DetailViewController: UIViewController {
     
     lazy var runtimeStack: UIStackView = {
         let view = UIStackView()
-       view.addArrangedSubview(runtimeIcon)
-       view.addArrangedSubview(runtimeLabel)
+        view.addArrangedSubview(runtimeIcon)
+        view.addArrangedSubview(runtimeLabel)
         
-       view.axis = .horizontal
-       view.distribution = .fill
-       view.alignment = .fill
-       view.spacing = 3
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.alignment = .fill
+        view.spacing = 3
         
         return view
     }()
     
     lazy var ratingIcon: UIImageView = {
         let image = UIImageView()
-       image.image = UIImage(systemName: "star.fill")
-       image.tintColor = .orange
-       image.setContentHuggingPriority(.required, for: .vertical)
+        image.image = UIImage(systemName: "star.fill")
+        image.tintColor = .orange
+        image.setContentHuggingPriority(.required, for: .vertical)
         
         return image
     }()
     
     lazy var ratingLabel: UILabel = {
         let label = UILabel()
-       label.text = "0.0"         // placeholder
-       label.textColor = .lightGray
-       label.textAlignment = .left
+        label.text = "0.0"         // placeholder
+        label.textColor = .lightGray
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         
         return label
@@ -97,27 +97,27 @@ class DetailViewController: UIViewController {
     
     lazy var ratingStack: UIStackView = {
         let view = UIStackView()
-       view.addArrangedSubview(ratingIcon)
+        view.addArrangedSubview(ratingIcon)
         view.addArrangedSubview(ratingLabel)
         
-       view.axis = .horizontal
-       view.distribution = .fill
-       view.alignment = .fill
-       view.spacing = 3
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.alignment = .fill
+        view.spacing = 3
         
         return view
     }()
     
     lazy var mainInfoLabelStack: UIStackView = {
         let view = UIStackView()
-      view.addArrangedSubview(titleLabel)
-      view.addArrangedSubview(UIView())
-      view.addArrangedSubview(runtimeStack)
-      view.addArrangedSubview(ratingStack)
-
-      view.axis = .vertical
-      view.distribution = .fill
-      view.alignment = .leading
+        view.addArrangedSubview(titleLabel)
+        view.addArrangedSubview(UIView())
+        view.addArrangedSubview(runtimeStack)
+        view.addArrangedSubview(ratingStack)
+        
+        view.axis = .vertical
+        view.distribution = .fill
+        view.alignment = .leading
         view.spacing = 5
         
         return view
@@ -125,14 +125,14 @@ class DetailViewController: UIViewController {
     
     lazy var mainInfoStackView: UIStackView = {
         let view = UIStackView()
-      view.addArrangedSubview(posterImage)
-      view.addArrangedSubview(mainInfoLabelStack)
-
-      view.axis = .horizontal
-      view.distribution = .fill
-      view.alignment = .fill
-      view.spacing = 10
-      view.isLayoutMarginsRelativeArrangement = true
+        view.addArrangedSubview(posterImage)
+        view.addArrangedSubview(mainInfoLabelStack)
+        
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.alignment = .fill
+        view.spacing = 10
+        view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         
         return view
@@ -155,9 +155,22 @@ class DetailViewController: UIViewController {
     //MARK: Constraints
     private func applyConstraint() {
         
+        var dividerView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .gray
+            view.snp.makeConstraints { make in
+                make.height.equalTo(0.5)
+            }
+            return view
+        }()
+        
+        let dividerArray = Array(repeating: dividerView, count: 4)
+        
         // Add to Subview
         self.view.addSubview(backDropImage)
         self.view.addSubview(mainInfoStackView)
+        dividerArray.forEach{ self.view.addSubview($0) }
+
         
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
@@ -177,6 +190,10 @@ class DetailViewController: UIViewController {
         runtimeStack.snp.makeConstraints { make in
             make.height.equalTo(runtimeLabel.snp.height)
             make.width.equalTo(runtimeIcon.snp.height)
+        }
+        dividerArray[0].snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.centerY.equalTo(mainInfoStackView.snp.bottom)
         }
     }
 }
