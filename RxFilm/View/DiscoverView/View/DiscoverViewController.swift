@@ -79,7 +79,7 @@ extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDeleg
 extension DiscoverViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCollectionViewCell else { return }
-        print(cell.contentId!)
+        print(cell.contentId)
     }
 }
 

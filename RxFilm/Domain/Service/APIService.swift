@@ -8,13 +8,18 @@
 import Foundation
 import RxSwift
 
-// TODO: - Make this layer to generic
+// TODO: - Make this layer to generic (Alamofire)
 
 class APIService {
     
     ///Insert api
     static func configureUrlString(category: MovieListCategory, language: Language, page: Int) -> String {
         return "https://api.themoviedb.org/3/movie/\(category.key)?api_key=\(Network.APIKey)&language=\(language.key)&page=\(page)"
+    }
+    ///2.API
+    static func configureUrlString(id: Int, language: Language) -> String {
+        return "https://api.themoviedb.org/3/movie/\(id)?api_key=\(Network.APIKey)&language=\(language)"
+        
     }
     
     static func fetchRequest(url: String,retries:Int,onComlete: @escaping(Result<Data, Error>) ->Void) {

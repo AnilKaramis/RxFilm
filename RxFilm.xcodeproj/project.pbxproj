@@ -26,6 +26,7 @@
 		A55C1B1C2C3D2FD2004D6AAA /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B1B2C3D2FD2004D6AAA /* IconLabel.swift */; };
 		A55C1B1E2C3D2FDC004D6AAA /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B1D2C3D2FDC004D6AAA /* DescriptionView.swift */; };
 		A590451F2C3D4036007ED191 /* DoubleColumnDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590451E2C3D4036007ED191 /* DoubleColumnDescriptionView.swift */; };
+		A59045252C3D57D0007ED191 /* DetailViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59045242C3D57D0007ED191 /* DetailViewExtensions.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
 		A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120402C1254630045F4C3 /* ChartViewController.swift */; };
 		A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */; };
@@ -81,6 +82,7 @@
 		A55C1B1B2C3D2FD2004D6AAA /* IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		A55C1B1D2C3D2FDC004D6AAA /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		A590451E2C3D4036007ED191 /* DoubleColumnDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleColumnDescriptionView.swift; sourceTree = "<group>"; };
+		A59045242C3D57D0007ED191 /* DetailViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewExtensions.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A5A120402C1254630045F4C3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,8 +244,9 @@
 		A55C1B152C3D16E6004D6AAA /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				A59045262C3D57E9007ED191 /* Controller */,
+				A59045212C3D578A007ED191 /* ViewModel */,
 				A55C1B182C3D16FE004D6AAA /* View */,
-				A55C1B162C3D16FA004D6AAA /* DetailViewModel.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -251,12 +254,36 @@
 		A55C1B182C3D16FE004D6AAA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A55C1B192C3D1714004D6AAA /* DetailViewController.swift */,
+				A59045202C3D5768007ED191 /* CustomView */,
+				A59045242C3D57D0007ED191 /* DetailViewExtensions.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A59045202C3D5768007ED191 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
 				A55C1B1B2C3D2FD2004D6AAA /* IconLabel.swift */,
 				A55C1B1D2C3D2FDC004D6AAA /* DescriptionView.swift */,
 				A590451E2C3D4036007ED191 /* DoubleColumnDescriptionView.swift */,
 			);
-			path = View;
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		A59045212C3D578A007ED191 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A55C1B162C3D16FA004D6AAA /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A59045262C3D57E9007ED191 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A55C1B192C3D1714004D6AAA /* DetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A5A120422C14BC090045F4C3 /* ChartView */ = {
@@ -435,7 +462,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					A5D8AAEA2BFE40A8002F007F = {
 						CreatedOnToolsVersion = 15.3;
@@ -624,6 +651,7 @@
 				A55C1B142C3CD7C3004D6AAA /* MovieDetail.swift in Sources */,
 				A5A120482C14CAF30045F4C3 /* CreditViewController.swift in Sources */,
 				A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */,
+				A59045252C3D57D0007ED191 /* DetailViewExtensions.swift in Sources */,
 				A53F86D12C0265A3002BBEA5 /* DiscoverCollectionHeaderView.swift in Sources */,
 				A590451F2C3D4036007ED191 /* DoubleColumnDescriptionView.swift in Sources */,
 				A53477712C2A1202000DD81E /* DiscoverViewModel.swift in Sources */,
@@ -867,7 +895,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFF1487802DAFB0E68B0A5DC /* Pods-RxFilmTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -888,7 +915,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FE25EB45A8A120DB535343DC /* Pods-RxFilmTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -909,7 +935,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ECE8F0C3DFA0C9ABD3328535 /* Pods-RxFilm-RxFilmUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HX5P2M97J;
@@ -928,7 +953,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD80A3957909D81DA63BD1BC /* Pods-RxFilm-RxFilmUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HX5P2M97J;

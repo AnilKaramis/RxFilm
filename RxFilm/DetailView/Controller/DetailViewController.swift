@@ -11,6 +11,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    let viewModel: DetailViewModel
+    
+    init (id: Int) {
+        self.viewModel = DetailViewModel(contentId: id)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -158,8 +169,8 @@ class DetailViewController: UIViewController {
         view.alignment = .fill
         view.spacing = 10
         view.isLayoutMarginsRelativeArrangement = true
-        view.layoutMargins = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 20)
-        
+        view.layoutMargins = UIEdgeInsets.detailViewComponentInset
+
         return view
     }()
     //MARK: -Overview
@@ -262,7 +273,7 @@ struct ViewControllerRepresentable: UIViewControllerRepresentable {
     }
     @available(iOS 13.0.0, *)
     func makeUIViewController(context: Context) -> UIViewController{
-        DetailViewController()
+        DetailViewController(id: 634649)
     }
 }
 @available(iOS 13.0, *)
