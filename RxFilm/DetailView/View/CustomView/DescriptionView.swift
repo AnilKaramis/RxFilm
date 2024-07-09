@@ -18,7 +18,7 @@ class DescriptionView: UIView {
         return view
     }()
 
-    lazy var label: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
        label.textColor = .white
        label.textAlignment = .left
@@ -42,7 +42,7 @@ class DescriptionView: UIView {
     
     lazy var stack: UIStackView = {
         let view = UIStackView()
-       view.addArrangedSubview(label)
+        view.addArrangedSubview(titleLabel)
        view.addArrangedSubview(contentLabel)
 
        view.axis = .vertical

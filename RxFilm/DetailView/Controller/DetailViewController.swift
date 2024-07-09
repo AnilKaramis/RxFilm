@@ -8,10 +8,12 @@
 import Foundation
 import SnapKit
 import UIKit
+import RxSwift
 
 class DetailViewController: UIViewController {
     
     let viewModel: DetailViewModel
+    let disposeBag = DisposeBag()
     
     init (id: Int) {
         self.viewModel = DetailViewModel(contentId: id)
@@ -39,9 +41,11 @@ class DetailViewController: UIViewController {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.image = UIImage(named: "img_placeholder")    // placeholder image
+        image.backgroundColor = .systemOrange
         
         image.setContentHuggingPriority(.required, for: .horizontal)
-        
+        image.setContentHuggingPriority(.required, for: .vertical)
+
         return image
     }()
     
@@ -166,7 +170,7 @@ class DetailViewController: UIViewController {
         
         view.axis = .horizontal
         view.distribution = .fill
-        view.alignment = .fill
+        view.alignment = .leading
         view.spacing = 10
         view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets.detailViewComponentInset
@@ -177,7 +181,7 @@ class DetailViewController: UIViewController {
     
     lazy var overView: DescriptionView = {
         let compound = DescriptionView()
-        compound.label.text = "Overview"
+        compound.titleLabel.text = "Overview"
         compound.contentLabel.text = "The only difference between a problem and a solution is that people understand the solution"
         
         return compound
@@ -186,10 +190,9 @@ class DetailViewController: UIViewController {
     //MARK: Date & Genre
     lazy var dateGenre: DoubleColumnDescriptionView = {
         let compound = DoubleColumnDescriptionView()
-        compound.leftDescription.label.text = "Release Date"
+        compound.leftDescription.titleLabel.text = "Release Date"
         compound.leftDescription.contentLabel.text = "2022.01.03"
-        
-        compound.rightDescription.label.text = "Genre"
+        compound.rightDescription.titleLabel.text = "Genre"
         compound.rightDescription.contentLabel.text = "Action, Comedy, SF"
         
         return compound
@@ -207,6 +210,13 @@ class DetailViewController: UIViewController {
     
     private func bindData() {
         
+        _ = viewModel.movieDetailObservable.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { data in
+                
+                guard let movieDetail = data else { return }
+                self.applyMovieDetailData(data: movieDetail)
+            })
+
     }
     
     //MARK: -Constraints
@@ -253,6 +263,39 @@ class DetailViewController: UIViewController {
 
 //MARK: -Divider
 extension DetailViewController {
+    
+    private func applyMovieDetailData(data: MovieDetail) {
+        
+        DispatchQueue.global().async {
+            guard let imageURL = URL(string: APIService.configureUrlString(imagePath: data.backdropPath)) else { return }
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+            
+            DispatchQueue.main.sync {
+                self.backDropImage.image = UIImage(data: imageData)
+            }
+        }
+        
+        DispatchQueue.global().async {
+            guard let imageURL = URL(string: APIService.configureUrlString(imagePath: data.posterPath)) else { return }
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+            
+            DispatchQueue.main.sync {
+                self.posterImage.image = UIImage(data: imageData)
+            }
+        }
+        
+        self.titleLabel.text = data.title
+        self.taglineLabel.text = data.tagline
+        
+        self.runtimeIconLabel.label.text = String(data.runtime)
+        self.ratingIconLabel.label.text = String(data.voteAverage)
+        
+        self.overView.contentLabel.text = data.overview
+        self.dateGenre.leftDescription.contentLabel.text = data.releaseDate
+        
+        let genres = data.genres.map { $0.name }.joined(separator: ",")
+        self.dateGenre.rightDescription.contentLabel.text = genres
+    }
     
     // Place UIView to bottom anchor of target
     private func appendView(view: UIView, target: UIView) {
