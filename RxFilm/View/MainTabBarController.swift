@@ -20,9 +20,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.standardAppearance = appearanceTabBar
-        self.tabBar.scrollEdgeAppearance = appearanceTabBar
         self.tabBar.tintColor = .white
+        self.tabBar.scrollEdgeAppearance = appearanceTabBar
+        self.tabBar.standardAppearance = appearanceTabBar
+
         
         self.delegate = self
     }
@@ -36,11 +37,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let chartItem = ChartViewController()
         chartItem.tabBarItem = UITabBarItem(title: "Charts", image: UIImage(systemName: "list.number"), selectedImage: UIImage(systemName: "list.number"))
         
+        let chartNavigationItem = UINavigationController(rootViewController: chartItem)
+        
         let elseItem = UIViewController()
         elseItem.tabBarItem = UITabBarItem(title: "Credit", image: UIImage(systemName: "ellipsis"), selectedImage: UIImage(systemName: "Credits"))
         
-        
-        self.viewControllers = [discoverItem, chartItem, elseItem]
+        self.viewControllers = [discoverItem, chartNavigationItem, elseItem]
     }
     
     //Delegate methods
