@@ -98,7 +98,6 @@ extension ChartViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? ChartTableViewCell else { return }
         print(cell.contentId!)
         
-        cell.isSelected = false
     }
 
 }

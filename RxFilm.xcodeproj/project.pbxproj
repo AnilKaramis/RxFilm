@@ -21,6 +21,8 @@
 		A54C8D0B2C31C200005826FD /* DiscoverCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8D0A2C31C200005826FD /* DiscoverCollectionViewDataSource.swift */; };
 		A54C8D102C329B2D005826FD /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C8D0F2C329B26005826FD /* PaddingTextField.swift */; };
 		A55C1B142C3CD7C3004D6AAA /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B132C3CD7C3004D6AAA /* MovieDetail.swift */; };
+		A55C1B172C3D16FA004D6AAA /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B162C3D16FA004D6AAA /* DetailViewModel.swift */; };
+		A55C1B1A2C3D1714004D6AAA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C1B192C3D1714004D6AAA /* DetailViewController.swift */; };
 		A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */; };
 		A5A120412C1254630045F4C3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120402C1254630045F4C3 /* ChartViewController.swift */; };
 		A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */; };
@@ -71,6 +73,8 @@
 		A54C8D0A2C31C200005826FD /* DiscoverCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A54C8D0F2C329B26005826FD /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A55C1B132C3CD7C3004D6AAA /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		A55C1B162C3D16FA004D6AAA /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		A55C1B192C3D1714004D6AAA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A5A1203E2C1253830045F4C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A5A120402C1254630045F4C3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A5A120442C14BCF90045F4C3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +233,23 @@
 			path = UITextField;
 			sourceTree = "<group>";
 		};
+		A55C1B152C3D16E6004D6AAA /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A55C1B182C3D16FE004D6AAA /* View */,
+				A55C1B162C3D16FA004D6AAA /* DetailViewModel.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		A55C1B182C3D16FE004D6AAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A55C1B192C3D1714004D6AAA /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A5A120422C14BC090045F4C3 /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +303,7 @@
 		A5D8AAED2BFE40A8002F007F /* RxFilm */ = {
 			isa = PBXGroup;
 			children = (
+				A55C1B152C3D16E6004D6AAA /* DetailView */,
 				A54C8D0C2C329AC9005826FD /* Common */,
 				A54C8CFC2C2F98F0005826FD /* Base */,
 				A534774F2C2738FC000DD81E /* Domain */,
@@ -577,8 +599,10 @@
 				A5A120452C14BCF90045F4C3 /* ChartTableViewCell.swift in Sources */,
 				A51831F52C045F8B00974B16 /* DiscoverCollectionViewCell.swift in Sources */,
 				A5D8AAEF2BFE40A8002F007F /* AppDelegate.swift in Sources */,
+				A55C1B172C3D16FA004D6AAA /* DetailViewModel.swift in Sources */,
 				A5D8AAF12BFE40A8002F007F /* SceneDelegate.swift in Sources */,
 				A53477532C27391F000DD81E /* APIService.swift in Sources */,
+				A55C1B1A2C3D1714004D6AAA /* DetailViewController.swift in Sources */,
 				A53F86CD2C026502002BBEA5 /* DiscoverViewController.swift in Sources */,
 				A53477552C27392A000DD81E /* MovieList.swift in Sources */,
 				A5A1203F2C1253830045F4C3 /* MainTabBarController.swift in Sources */,
