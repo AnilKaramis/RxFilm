@@ -22,7 +22,7 @@ class APIService {
         
     }
     static func configureUrlString(imagePath: String) -> String{
-        return "https://image.tmdb.org/t/p/original/\(imagePath)"
+        return "https://image.tmdb.org/t/p/w500/\(imagePath)"
     }
     
     static func fetchRequest(url: String,retries:Int,onComlete: @escaping(Result<Data, Error>) ->Void) {
