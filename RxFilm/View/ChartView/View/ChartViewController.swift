@@ -57,7 +57,6 @@ extension ChartViewController {
         navigationController?.navigationBar.standardAppearance = navigationAppearance
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem?.tintColor = .white
-        navigationItem.title = "Popular"
         
         let categoryMenuItem = [
                 UIAction(title: "Popular", image: UIImage(systemName: "flame.fill"), handler: { _ in }),
@@ -85,6 +84,11 @@ extension ChartViewController {
                 cell.setData(rank: index, movie: movie)
             }
             .disposed(by: disposeBag)
+        
+        _ = viewModel.listTitleObaservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { self.navigationItem.title = $0 })
+
     }
 }
 
