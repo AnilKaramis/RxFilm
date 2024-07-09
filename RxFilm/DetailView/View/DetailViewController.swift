@@ -141,6 +141,14 @@ class DetailViewController: UIViewController {
         return view
     }()
     //MARK: -Overview
+    
+    lazy var overviewDivider: UIView = {
+        let view = UIView()
+       view.backgroundColor = .gray
+        
+        return view
+    }()
+
     lazy var overviewLabel: UILabel = {
         let label = UILabel()
        label.text = "OverView"
@@ -179,7 +187,15 @@ class DetailViewController: UIViewController {
         
         return view
     }()
-    
+    //MARK: Date & Genre
+    lazy var dateGenreDivider: UIView = {
+        let view = UIView()
+       view.backgroundColor = .gray
+        view.snp.makeConstraints { $0.height.equalTo(0.5) }
+        
+        return view
+    }()
+
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,10 +210,8 @@ class DetailViewController: UIViewController {
         
     }
     
-    //MARK: Constraints
+    //MARK: -Constraints
     private func applyConstraint() {
-        
-        let dividerArray = Array(repeating: DetailViewController.dividerView, count: 4)
         
         //Setup ScrollView
         self.view.addSubview(scrollView)
@@ -216,7 +230,7 @@ class DetailViewController: UIViewController {
         self.contentView.addSubview(backDropImage)
         self.contentView.addSubview(mainInfoStackView)
         self.contentView.addSubview(overviewStack)
-        dividerArray.forEach{ self.contentView.addSubview($0) }
+//        dividerArray.forEach{ self.contentView.addSubview($0) }
         
         // Set Constraint
         backDropImage.snp.makeConstraints { make in
@@ -242,23 +256,18 @@ class DetailViewController: UIViewController {
             make.width.equalTo(runtimeIcon.snp.height)
             
         }
-        placeToBottomOfView(placer: dividerArray[0], target: mainInfoStackView)
+        overviewDivider.snp.makeConstraints { $0.height.equalTo(0.5) }
         
         placeToBottomOfView(placer: overviewStack, target: mainInfoStackView)
+        
+        //divider
+        placeToBottomOfView(placer: overviewDivider, target: mainInfoStackView)
+        placeToBottomOfView(placer: dateGenreDivider, target: overviewStack)
         
     }
 }
 //MARK: -Divider
 extension DetailViewController {
-    
-    static let dividerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray
-        view.snp.makeConstraints { make in
-            make.height.equalTo(0.5)
-        }
-        return view
-    }()
     
     // Place UIView to bottom anchor of target
     private func placeToBottomOfView(placer: UIView, target: UIView) {
