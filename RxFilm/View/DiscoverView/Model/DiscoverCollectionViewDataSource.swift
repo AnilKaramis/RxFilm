@@ -40,7 +40,6 @@ struct DiscoverCollectionViewDataSource {
             cell.setData(movie: item.movie)
             return cell
         })
-        
         dataSource.configureSupplementaryView = {(dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Identifiers.discover_collection_header, for: indexPath) as? DiscoverCollectionHeaderView else { return UICollectionReusableView() }
             return header

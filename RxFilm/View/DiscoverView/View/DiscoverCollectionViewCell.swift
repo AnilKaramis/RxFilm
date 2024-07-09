@@ -9,11 +9,9 @@ import UIKit
 import SnapKit
 
 class DiscoverCollectionViewCell: UICollectionViewCell {
-    
     var contentId: Int?
     
     //MARK: Properties
-    
     let posterImage : UIImageView = {
         lazy var imageView = UIImageView()
         imageView.image = UIImage(named: Image.img_placeholder)
@@ -32,12 +30,10 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         let stackView : UIStackView = {
             let view = UIStackView()
             view.addArrangedSubview(posterImage)
             view.addArrangedSubview(movieTitle)
-            
             view.axis = .vertical
             view.distribution = .fill
             view.alignment = .fill

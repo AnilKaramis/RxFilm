@@ -14,7 +14,6 @@ class DescriptionView: UIView {
         let view = UIView()
        view.backgroundColor = .gray
         view.isHidden = false
-        
         return view
     }()
 
@@ -26,7 +25,6 @@ class DescriptionView: UIView {
        label.numberOfLines = 0
        label.minimumScaleFactor = 10
         label.setContentHuggingPriority(.required, for: .vertical)
-        
         return label
     }()
     
@@ -36,7 +34,6 @@ class DescriptionView: UIView {
        label.textColor = .lightGray
        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        
         return label
     }()
     
@@ -44,14 +41,12 @@ class DescriptionView: UIView {
         let view = UIStackView()
         view.addArrangedSubview(titleLabel)
        view.addArrangedSubview(contentLabel)
-
        view.axis = .vertical
        view.distribution = .fill
        view.alignment = .fill
        view.spacing = 3
        view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        
         return view
     }()
     
@@ -66,7 +61,6 @@ class DescriptionView: UIView {
     }
 
     private func setupView() {
-        
         self.addSubview(stack)
 
         stack.snp.makeConstraints { make in
@@ -82,7 +76,5 @@ class DescriptionView: UIView {
             make.left.right.equalToSuperview()
         }
     }
-
-
 }
 

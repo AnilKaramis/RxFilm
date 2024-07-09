@@ -15,7 +15,6 @@ class IconLabel: UIView {
         let image = UIImageView()
         image.tintColor = .lightGray
         image.setContentHuggingPriority(.required, for: .vertical)
-        
         return image
     }()
     
@@ -29,15 +28,12 @@ class IconLabel: UIView {
     
     lazy var stack: UIStackView = {
         let view = UIStackView()
-        
         view.addArrangedSubview(icon)
         view.addArrangedSubview(label)
-        
         view.axis = .horizontal
         view.distribution = .fill
         view.alignment = .fill
         view.spacing = 3
-        
         return view
     }()
     

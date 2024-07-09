@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
-    
     let appearanceTabBar: UITabBarAppearance = {
         var apperance = UITabBarAppearance()
         apperance.configureWithOpaqueBackground()

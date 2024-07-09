@@ -29,7 +29,4 @@ class DetailViewModel {
             .take(1)
             .bind(to: movieDetailObservable)
     }
-
-                                                 
-
 }

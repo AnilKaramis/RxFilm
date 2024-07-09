@@ -12,7 +12,6 @@ import RxCocoa
 import RxDataSources
 
 class DiscoverViewController:UIViewController {
-    
     let viewModel = DiscoverViewModel()
     let disposeBag = DisposeBag()
     
@@ -24,9 +23,7 @@ class DiscoverViewController:UIViewController {
         flowLayout.minimumLineSpacing = 20
         flowLayout.minimumInteritemSpacing = 20
         
-        
         // CollectionView
-        
         var collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
         
         collectionView.register(DiscoverCollectionViewCell.self, forCellWithReuseIdentifier: Identifiers.discover_collection_cell)
@@ -67,7 +64,6 @@ extension DiscoverViewController {
             .disposed(by: disposeBag)
     }
 }
-
 //MARK: -CollectionView Frame
 
 extension DiscoverViewController:UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -85,10 +81,8 @@ extension DiscoverViewController {
         let vc = DetailViewController(id: id)
         
         self.navigationController?.pushViewController(vc, animated: true)
-
     }
 }
-
 //MARK: -Dismiss Keyaord
 extension DiscoverViewController {
     func dismissKeyboard() {

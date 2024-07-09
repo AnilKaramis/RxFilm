@@ -12,18 +12,15 @@ struct Colors {
     static let light_Background = "LightBackgroundColor"
     static let placeholder = "PlaceholderTextColor"
 }
-
 struct Identifiers {
     static let discover_collection_cell = "DiscoverCollectionCell"
     static let discover_collection_header = "DiscoverCollectionHeader"
-    
     static let chart_table_cell = "ChartTableCell"
     static let chart_table_header = "ChartTableHeader"
 }
 struct Image {
     static let img_placeholder = "img_placeholder"
 }
-
 let genreCode = [
     28 : "Action",
     12 : "Adventure",

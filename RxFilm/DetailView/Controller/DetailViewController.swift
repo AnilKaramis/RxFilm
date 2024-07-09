@@ -242,7 +242,6 @@ class DetailViewController: UIViewController {
         
         appendView(view: overView, target: mainInfoStackView)
         appendView(view: dateGenre, target: overView)
-        
         dateGenre.snp.makeConstraints{ $0.bottom.equalToSuperview() }
     }
     

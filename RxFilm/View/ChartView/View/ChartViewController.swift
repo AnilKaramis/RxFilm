@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class ChartViewController: UIViewController {
-    
     let viewModel = ChartViewModel()
     let disposeBag = DisposeBag()
     

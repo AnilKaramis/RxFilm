@@ -26,7 +26,6 @@ class APIService {
     }
     
     static func fetchRequest(url: String,retries:Int,onComlete: @escaping(Result<Data, Error>) ->Void) {
-        
         guard let url = URL(string: url) else { return }
         
         let task = URLSession(configuration: .default).dataTask(with: url) { data, response, error in
@@ -54,10 +53,8 @@ extension String {
 //MARK: - Fetch with Rx
 
 extension APIService {
-    
     static func fetchWithRx(url: String, retries: Int) -> Observable<Data> {
         return Observable.create { emitter in
-            
             fetchRequest(url: url, retries: retries) { result in
                 switch result {
                 case .success(let data):
@@ -75,7 +72,7 @@ extension APIService {
 
 enum MovieListCategory {
     case Popular, Upcoming, TopRated,NowPlaying
-    
+
     var key: String {
         switch self {
         case.Popular: return "popular"
@@ -95,15 +92,12 @@ enum MovieListCategory {
 }
 
 enum Language {
-    
     case Turkish, English
     
     var key: String {
-        
         switch self{
         case .Turkish: return "tr-TR"
         case .English: return "en-US"
-       
         }
     }
 }

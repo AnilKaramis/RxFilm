@@ -10,11 +10,9 @@ import Cosmos
 import SnapKit
 
 class ChartTableViewCell: UITableViewCell {
-    
     var contentId: Int?
     
     //MARK: - Properties
-    
     lazy var rankLabel : UILabel = {
         
         var label = UILabel()

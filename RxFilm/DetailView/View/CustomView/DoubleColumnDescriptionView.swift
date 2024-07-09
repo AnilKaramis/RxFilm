@@ -17,12 +17,10 @@ class DoubleColumnDescriptionView: UIView {
         let view = UIStackView()
       view.addArrangedSubview(leftDescription)
       view.addArrangedSubview(rightDescription)
-      
       view.axis = .horizontal
       view.distribution = .fillEqually
       view.alignment = .fill
         view.spacing = 0
-        
         return view
     }()
     
@@ -37,7 +35,6 @@ class DoubleColumnDescriptionView: UIView {
     }
 
     private func setupView() {
-
         addSubview(wrapperStack)
         
         wrapperStack.snp.makeConstraints { make in
