@@ -10,6 +10,8 @@ import SnapKit
 
 class DiscoverCollectionViewCell: UICollectionViewCell {
     
+    var contentId: Int?
+    
     //MARK: Properties
     
     let posterImage : UIImageView = {
@@ -69,6 +71,7 @@ extension DiscoverCollectionViewCell {
     func setData(movie:MovieFront) {
         
         self.movieTitle.text = movie.title
+        self.contentId = movie.id
         
         DispatchQueue.global().async {
             guard let imageURL = URL(string: movie.posterPath) else {

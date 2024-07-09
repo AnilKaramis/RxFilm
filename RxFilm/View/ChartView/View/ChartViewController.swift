@@ -20,7 +20,7 @@ class ChartViewController: UIViewController {
     let chartTableView : UITableView = {
         var tableView = UITableView()
         tableView.backgroundColor = UIColor(named: Colors.background)
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: Identifiers.chart_table_cell)
         return tableView
     }()
@@ -91,8 +91,21 @@ extension ChartViewController {
 
     }
 }
+//MARK: Cell Selection
 
 extension ChartViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ChartTableViewCell else { return }
+        print(cell.contentId!)
+        
+        cell.isSelected = false
+    }
+
+}
+
+//MARK: Cell Height
+
+extension ChartViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
