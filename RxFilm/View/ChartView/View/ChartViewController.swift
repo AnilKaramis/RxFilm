@@ -59,9 +59,9 @@ extension ChartViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
         
         let categoryMenuItem = [
-                UIAction(title: "Popular", image: UIImage(systemName: "flame.fill"), handler: { _ in }),
-                UIAction(title: "Top Rated", image: UIImage(systemName: "star.fill"), handler: { _ in }),
-                UIAction(title: "Now Playing", image: UIImage(systemName: "theatermasks.fill"), handler: { _ in })
+            UIAction(title: "Popular", image: UIImage(systemName: "flame.fill"), handler: { _ in self.viewModel.requestData(category: .Popular) }),
+            UIAction(title: "Top Rated", image: UIImage(systemName: "star.fill"), handler: { _ in self.viewModel.requestData(category: .TopRated) }),
+            UIAction(title: "Now Playing", image: UIImage(systemName: "theatermasks.fill"), handler: { _ in self.viewModel.requestData(category: .NowPlaying) })
         ]
         let categoryMenu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: categoryMenuItem)
         
