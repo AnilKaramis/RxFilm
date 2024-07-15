@@ -10,7 +10,7 @@ import Foundation
 struct MovieFront {
     let id: Int
     let title: String
-    let posterPath: String
+    let posterPath: String?
     let genre: String
     let releaseDate: String
     let ratingScore: Double
@@ -19,7 +19,8 @@ struct MovieFront {
 
 extension MovieFront{
     static func convertFromMovieInfo(movie: MovieListResult) -> MovieFront {
-//        return MovieFront(id: movie.id, title: movie.title, posterPath: "https://image.tmdb.org/t/p/original/\(movie.posterPath)", genre: genreCode[movie.genreIDS[0]] ?? "", releaseDate: movie.releaseDate, ratingScore: movie.voteAverage, ratingCount: movie.voteCount)
-        return MovieFront(id: movie.id, title: movie.title, posterPath: movie.posterPath, genre: genreCode[movie.genreIDS[0]] ?? "", releaseDate: movie.releaseDate, ratingScore: movie.voteAverage, ratingCount: movie.voteCount)
+        let genreValue: String = (movie.genreIDS.count > 0) ? genreCode[movie.genreIDS[0]] ?? "" : ""
+        
+        return MovieFront(id: movie.id, title: movie.title, posterPath: movie.posterPath, genre: genreValue, releaseDate: movie.releaseDate, ratingScore: movie.voteAverage, ratingCount: movie.voteCount)
     }
 }
