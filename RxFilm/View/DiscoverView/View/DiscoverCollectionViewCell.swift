@@ -21,7 +21,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     let movieTitle : UILabel = {
         lazy var text = UILabel()
-        text.font = UIFont.systemFont(ofSize: 10, weight: .medium)
+        text.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         text.textColor = .white
         text.numberOfLines = 3
         text.minimumScaleFactor = 5
@@ -32,8 +32,8 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         let stackView : UIStackView = {
             let view = UIStackView()
-            view.addArrangedSubview(posterImage)
             view.addArrangedSubview(movieTitle)
+            view.addArrangedSubview(posterImage)
             view.axis = .vertical
             view.distribution = .fill
             view.alignment = .fill
@@ -41,7 +41,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
             return view
         }()
         
-        self.addSubview(stackView)
+        self.contentView.addSubview(stackView)
         
         //MARK: Constraints Properties
         

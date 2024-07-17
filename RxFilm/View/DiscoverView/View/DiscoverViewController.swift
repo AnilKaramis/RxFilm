@@ -17,7 +17,7 @@ class DiscoverViewController:UIViewController {
     let disposeBag = DisposeBag()
     
     // CollectionView
-    lazy var CollectionView : UICollectionView = {
+    lazy var collectionView : UICollectionView = {
         var flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         flowLayout.headerReferenceSize = CGSize(width: self.preferredContentSize.width, height: 180)
@@ -38,7 +38,7 @@ class DiscoverViewController:UIViewController {
         super.viewDidLoad()
         
         self.dismissKeyboard()
-        CollectionView.delegate = self
+        collectionView.delegate = self
         
         navigationController?.setNavigationBarHidden(true, animated: false)
 
@@ -54,14 +54,14 @@ extension DiscoverViewController {
     private func setupLayout() {
         self.title = "Home"
         self.view.backgroundColor = UIColor(named: Colors.background)
-        super.view.addSubview(CollectionView)
-        CollectionView.snp.makeConstraints {
+        super.view.addSubview(collectionView)
+        collectionView.snp.makeConstraints {
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
     private func bindData() {
         viewModel.movieFrontObservable
-            .bind(to: CollectionView.rx.items(dataSource: viewModel.dataSource))
+            .bind(to: collectionView.rx.items(dataSource: viewModel.dataSource))
             .disposed(by: disposeBag)
     }
 }
