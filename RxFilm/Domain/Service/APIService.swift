@@ -21,6 +21,9 @@ class APIService {
         return "https://api.themoviedb.org/3/movie/\(id)?api_key=\(Network.APIKey)&language=\(language)"
         
     }
+    static func configureUrlString(keyword: String, language: Language, page: Int) -> String {
+        return "https://api.themoviedb.org/3/search/movie?query=\(keyword)&api_key=\(Network.APIKey)&language=\(language.key)&page=\(page)"
+    }
     static func configureUrlString(imagePath: String) -> String{
         return "https://image.tmdb.org/t/p/w500/\(imagePath)"
     }
