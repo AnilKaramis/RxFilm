@@ -28,9 +28,9 @@ class DetailViewController: UIViewController {
     lazy var backButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
-        button.imageView?.image = UIImage(systemName: "chevron.backward.circle")
-        button.imageView?.tintColor = .white
-        
+        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.tintColor = .white
+        button.setPreferredSymbolConfiguration(.init(pointSize: 30, weight: .regular, scale: .default), forImageIn: .normal)
         return button
     }()
     
@@ -214,8 +214,8 @@ class DetailViewController: UIViewController {
         }
         
         // Add to Subview into contentView
-        self.contentView.addSubview(backButton)
         self.contentView.addSubview(backDropImage)
+        self.contentView.addSubview(backButton)
         self.contentView.addSubview(mainInfoStackView)
         self.contentView.addSubview(overView)
         self.contentView.addSubview(dateGenre)
@@ -228,8 +228,9 @@ class DetailViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().offset(20)
-            make.height.equalTo(backDropImage.snp.height).multipliedBy(0.15)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(0)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(10)
+            make.height.equalTo(50)
             make.width.equalTo(backButton.snp.height)
         }
         
