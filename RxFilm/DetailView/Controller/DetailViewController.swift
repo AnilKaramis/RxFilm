@@ -236,8 +236,7 @@ class DetailViewController: UIViewController {
         mainInfoStackView.snp.makeConstraints { make in
             make.top.equalTo(backDropImage.snp.bottom)
             make.left.right.equalToSuperview()
-            make.height.equalTo(self.view.snp.width).multipliedBy(0.45)
-            
+            make.height.equalTo(self.view.snp.width).multipliedBy(0.325)
         }
         
         appendView(view: overView, target: mainInfoStackView)
@@ -251,7 +250,7 @@ class DetailViewController: UIViewController {
             guard let imageURL = URL(string: APIService.configureUrlString(imagePath: data.backdropPath)) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.backDropImage.image = UIImage(data: imageData)
             }
         }
@@ -309,8 +308,8 @@ struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
         Group {
             ViewControllerRepresentable()
                 .ignoresSafeArea()
-                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-                .previewDevice(PreviewDevice(rawValue: "iPhone 12 Mini"))
+                .previewDisplayName("Preview")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
         }
     }
 } #endif

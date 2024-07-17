@@ -23,7 +23,6 @@ class ChartViewModel {
                 self.listTitleObaservable.onNext(category.title)
                 return response.results
             }.map { return $0.map { return MovieFront.convertFromMovieInfo(movie: $0) } }
-            .take(1)
             .debug()
             .bind(to: movieFrontObservable)
     }

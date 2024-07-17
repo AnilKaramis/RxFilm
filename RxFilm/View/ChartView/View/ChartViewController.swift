@@ -23,6 +23,7 @@ class ChartViewController: UIViewController {
         tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: Identifiers.chart_table_cell)
         return tableView
     }()
+    
     let navigationAppearance : UINavigationBarAppearance = {
         let navigation = UINavigationBarAppearance()
         navigation.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -30,7 +31,6 @@ class ChartViewController: UIViewController {
         navigation.backgroundColor = UIColor(named: Colors.background)
         return navigation
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

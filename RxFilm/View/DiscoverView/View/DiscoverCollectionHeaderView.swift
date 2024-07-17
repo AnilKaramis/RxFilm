@@ -7,15 +7,20 @@
 
 import UIKit
 import Foundation
+import RxSwift
 
 class DiscoverCollectionHeaderView: UICollectionReusableView {
+
+    let viewModel = DiscoverViewModel.shared
+    let disposeBag = DisposeBag()
     
+    // MARK: UI Properties
     let titleLabel: UILabel = {
         lazy var label = UILabel()
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.font = UIFont.systemFont(ofSize: 40 , weight: .bold)
         label.text = "Discover Movies"
         return label
     }()
@@ -37,6 +42,7 @@ class DiscoverCollectionHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        bindSearchField()
     }
     
     required init?(coder: NSCoder) {
@@ -62,6 +68,14 @@ extension DiscoverCollectionHeaderView {
            $0.right.equalToSuperview().offset(-20)
            $0.bottom.equalToSuperview().offset(-20)
         }
+    }
+    private func bindSearchField() {
+        self.searchField.rx.text.orEmpty
+            .debounce(RxTimeInterval.microseconds(5), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default))
+            .distinctUntilChanged()
+            .subscribe(onNext: {
+                self.viewModel.requestData(keyword: $0, page: 1) })
+            .disposed(by: disposeBag)
     }
 }
 

@@ -26,7 +26,6 @@ class DetailViewModel {
                 let response = try! JSONDecoder().decode(MovieDetail.self, from: data)
                 return response
             }
-            .take(1)
             .bind(to: movieDetailObservable)
     }
 }

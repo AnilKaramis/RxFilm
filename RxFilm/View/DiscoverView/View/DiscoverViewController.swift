@@ -12,7 +12,8 @@ import RxCocoa
 import RxDataSources
 
 class DiscoverViewController:UIViewController {
-    let viewModel = DiscoverViewModel()
+    
+    let viewModel = DiscoverViewModel.shared
     let disposeBag = DisposeBag()
     
     // CollectionView
@@ -44,7 +45,7 @@ class DiscoverViewController:UIViewController {
         setupLayout()
         bindData()
         
-        viewModel.requestData()
+        viewModel.requestData(page: 1)
     }
 }
 //MARK: -Extension ViewDidLoad
@@ -78,11 +79,10 @@ extension DiscoverViewController {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCollectionViewCell else { return }
         guard let id = cell.contentId else { return }
         
-        let vc = DetailViewController(id: id)
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(DetailViewController(id: id), animated: true)
     }
 }
+
 //MARK: -Dismiss Keyaord
 extension DiscoverViewController {
     func dismissKeyboard() {
@@ -95,4 +95,3 @@ extension DiscoverViewController {
         view.endEditing(true)
     }
 }
-
